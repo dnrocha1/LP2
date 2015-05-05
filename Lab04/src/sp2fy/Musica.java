@@ -8,7 +8,7 @@ public class Musica {
 	
 	public Musica(String nome, int duracao, String tipo) {
 		if(nome.equalsIgnoreCase("")){
-			//o objeto nao deve ser criado se o campo nome estiver vazio!
+			
 			}
 		}
 		this.nome = nome;
