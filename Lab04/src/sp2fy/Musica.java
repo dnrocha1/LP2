@@ -7,13 +7,21 @@ public class Musica {
 	private String tipo;
 	
 	public Musica(String nome, int duracao, String tipo) {
-		if(nome.equalsIgnoreCase("")){
-			
-			}
+		if (nome.equals(null) || nome.equals("")) {
+			throw new UnsupportedOperationException("Titulo da musica nao pode ser vazio.");
+		} else {
+			this.nome = nome;
 		}
-		this.nome = nome;
-		this.duracao = duracao;
-		this.tipo = tipo;
+		if(duracao < 0){
+			throw new UnsupportedOperationException("Duracao da musica nao pode ser negativa.");
+		}else{
+			this.duracao = duracao;
+		}
+		if (tipo.equals(null) || tipo.equals("")) {
+			throw new UnsupportedOperationException("Genero da musica nao pode ser vazio.");
+		} else {
+			this.tipo = tipo;
+		}
 	}
 
 	public String getNome() {
