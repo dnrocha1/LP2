@@ -6,19 +6,19 @@ public class Musica {
 	private int duracao;
 	private String tipo;
 	
-	public Musica(String nome, int duracao, String tipo) {
+	public Musica(String nome, int duracao, String tipo) throws Exception {
 		if (nome.equals(null) || nome.equals("")) {
-			throw new UnsupportedOperationException("Titulo da musica nao pode ser vazio.");
+			throw new Exception("Titulo da musica nao pode ser vazio.");
 		} else {
 			this.nome = nome;
 		}
 		if(duracao < 0){
-			throw new UnsupportedOperationException("Duracao da musica nao pode ser negativa.");
+			throw new Exception("Duracao da musica nao pode ser negativa.");
 		}else{
 			this.duracao = duracao;
 		}
 		if (tipo.equals(null) || tipo.equals("")) {
-			throw new UnsupportedOperationException("Genero da musica nao pode ser vazio.");
+			throw new Exception("Genero da musica nao pode ser vazio.");
 		} else {
 			this.tipo = tipo;
 		}
