@@ -63,5 +63,15 @@ public class Musica {
 			return false;
 		return true;
 	}
-	
+
+	/*
+	 * public boolean equals(Musica musica) { if (this == musica) return true;
+	 * if (musica == null) return false; if (getClass() != musica.getClass())
+	 * return false; if (duracao != musica.duracao) return false; if (nome ==
+	 * null) { if (musica.nome != null) return false; } else if
+	 * (!nome.equals(musica.nome)) return false; if (tipo == null) { if
+	 * (musica.tipo != null) return false; } else if (!tipo.equals(musica.tipo))
+	 * return false; return true; }
+	 */
+
 }
