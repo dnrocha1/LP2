@@ -41,4 +41,7 @@ public class Album {
 		this.ano = ano;
 	}
 	
+	public void addMusica(Musica m){
+		this.musicas.add(m);
+	}
 }
