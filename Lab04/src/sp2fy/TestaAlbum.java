@@ -32,6 +32,10 @@ public class TestaAlbum {
 			Assert.assertEquals("Sia", formsOfFear.getArtista());
 			Assert.assertEquals("1000 Forms Of Fear", formsOfFear.getTitulo());
 			Assert.assertEquals(2014, formsOfFear.getAno());
+			
+			formsOfFear.addMusica(chandelier);
+			formsOfFear.addMusica(elasticHeart);
+			formsOfFear.addMusica(cellophane);
 
 		} catch (Exception e) {
 			Assert.fail();
