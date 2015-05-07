@@ -48,4 +48,21 @@ public class Album {
 	public boolean verificaMusica(Musica m){
 		return musicas.contains(m);
 	}
+	
+	public int getIndice(Musica m) throws Exception {
+		if (m == null) {
+			throw new Exception("Musica nao existe");
+		} else {
+			return musicas.lastIndexOf(m);// problema quando houver o mesmo
+							// nome?? usar hash??
+		}
+	}
+
+	public boolean verificaIndice(int indice, Musica m) throws Exception {
+		if (m == null) {
+			throw new Exception("Musica nao existe");
+		} else {
+			return getIndice(m) == indice;
+		}
+	}
 }
