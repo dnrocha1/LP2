@@ -34,7 +34,12 @@ public class TestaAlbum {
 			formsOfFear.addMusica(chandelier);
 			formsOfFear.addMusica(elasticHeart);
 			formsOfFear.addMusica(cellophane);
-
+			
+			//verifique se as musicas pertencem ao album
+			Assert.assertTrue(formsOfFear.verificaMusica(chandelier));
+			Assert.assertTrue(formsOfFear.verificaMusica(elasticHeart));
+			Assert.assertTrue(formsOfFear.verificaMusica(cellophane));
+			
 		} catch (Exception e) {
 			Assert.fail();
 		}
