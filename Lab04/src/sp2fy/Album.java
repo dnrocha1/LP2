@@ -44,4 +44,8 @@ public class Album {
 	public void addMusica(Musica m){
 		this.musicas.add(m);
 	}
+	
+	public boolean verificaMusica(Musica m){
+		return musicas.contains(m);
+	}
 }
