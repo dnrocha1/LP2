@@ -12,6 +12,7 @@ public class Album {
 	private int ano; //mudar para tipo time???*
 	
 	public Album(String artista, String titulo, int ano) {
+		this.musicas = new ArrayList<Musica>();
 		this.artista = artista;
 		this.titulo = titulo;
 		this.ano = ano;
