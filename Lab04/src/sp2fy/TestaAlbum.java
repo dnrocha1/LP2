@@ -45,6 +45,12 @@ public class TestaAlbum {
 			Assert.assertTrue(formsOfFear.verificaIndice(formsOfFear.getIndice(cellophane), cellophane));
 			Assert.assertTrue(formsOfFear.verificaIndice(formsOfFear.getIndice(chandelier), chandelier));
 			
+			//remova e verifique se as musicas foram realmente removidas do album
+			formsOfFear.removeMusica(chandelier);
+			formsOfFear.removeMusica(cellophane);
+			Assert.assertFalse(formsOfFear.verificaMusica(chandelier));
+			Assert.assertFalse(formsOfFear.verificaMusica(cellophane));
+			
 		} catch (Exception e) {
 			Assert.fail();
 		}
