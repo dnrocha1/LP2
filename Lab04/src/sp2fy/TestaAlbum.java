@@ -40,6 +40,11 @@ public class TestaAlbum {
 			Assert.assertTrue(formsOfFear.verificaMusica(elasticHeart));
 			Assert.assertTrue(formsOfFear.verificaMusica(cellophane));
 			
+			//verifique se as faixas estao correspondentes a ordem de insercao no album
+			Assert.assertTrue(formsOfFear.verificaIndice(formsOfFear.getIndice(elasticHeart), elasticHeart));
+			Assert.assertTrue(formsOfFear.verificaIndice(formsOfFear.getIndice(cellophane), cellophane));
+			Assert.assertTrue(formsOfFear.verificaIndice(formsOfFear.getIndice(chandelier), chandelier));
+			
 		} catch (Exception e) {
 			Assert.fail();
 		}
