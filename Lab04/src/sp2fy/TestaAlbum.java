@@ -1,7 +1,7 @@
 package sp2fy;
 
-import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class TestaAlbum {
