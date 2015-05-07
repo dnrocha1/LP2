@@ -42,8 +42,9 @@ public class Album {
 		this.ano = ano;
 	}
 	
-	public void addMusica(Musica m){
+	public void addMusica(Musica m) {
 		this.musicas.add(m);
+		this.faixa++;
 	}
 	
 	public boolean verificaMusica(Musica m){
