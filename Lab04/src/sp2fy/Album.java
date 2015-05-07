@@ -67,4 +67,8 @@ public class Album {
 			return getIndice(m) == indice;
 		}
 	}
+	
+	public boolean removeMusica(Musica m){
+		return this.musicas.remove(m);
+	}
 }
