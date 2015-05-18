@@ -40,6 +40,8 @@ public class TestaAlbum {
 			Assert.assertTrue(formsOfFear.pertenceAlbum(chandelier));
 			Assert.assertTrue(formsOfFear.pertenceAlbum(elasticHeart));
 			Assert.assertTrue(formsOfFear.pertenceAlbum(cellophane));
+			
+			
 
 		} catch (Exception e) {
 			Assert.fail();
