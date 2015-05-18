@@ -41,8 +41,10 @@ public class TestaAlbum {
 			Assert.assertTrue(formsOfFear.pertenceAlbum(elasticHeart));
 			Assert.assertTrue(formsOfFear.pertenceAlbum(cellophane));
 			
+			Assert.assertEquals(1, formsOfFear.getFaixa(chandelier));
+			Assert.assertEquals(2, formsOfFear.getFaixa(elasticHeart));
+			Assert.assertEquals(3, formsOfFear.getFaixa(cellophane));
 			
-
 		} catch (Exception e) {
 			Assert.fail();
 		}
