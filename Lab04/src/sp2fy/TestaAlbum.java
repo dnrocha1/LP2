@@ -36,6 +36,10 @@ public class TestaAlbum {
 			formsOfFear.addMusica(chandelier);
 			formsOfFear.addMusica(elasticHeart);
 			formsOfFear.addMusica(cellophane);
+			
+			Assert.assertTrue(formsOfFear.pertenceAlbum(chandelier));
+			Assert.assertTrue(formsOfFear.pertenceAlbum(elasticHeart));
+			Assert.assertTrue(formsOfFear.pertenceAlbum(cellophane));
 
 		} catch (Exception e) {
 			Assert.fail();
