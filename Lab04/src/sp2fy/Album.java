@@ -61,4 +61,8 @@ public class Album {
 		}
 		return false;
 	}
+	
+	public boolean removeMusica(Musica m){
+		return this.musicas.remove(m);
+	}
 }
