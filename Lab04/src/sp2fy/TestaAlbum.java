@@ -33,17 +33,28 @@ public class TestaAlbum {
 			Assert.assertEquals("1000 Forms Of Fear", formsOfFear.getTitulo());
 			Assert.assertEquals(2014, formsOfFear.getAno());
 			
+			/*Crie algumas músicas e adicione as músicas no álbum.*/
 			formsOfFear.addMusica(chandelier);
 			formsOfFear.addMusica(elasticHeart);
 			formsOfFear.addMusica(cellophane);
 			
+			/*Verifique se as Músicas pertencem realmente ao álbum.*/
 			Assert.assertTrue(formsOfFear.pertenceAlbum(chandelier));
 			Assert.assertTrue(formsOfFear.pertenceAlbum(elasticHeart));
 			Assert.assertTrue(formsOfFear.pertenceAlbum(cellophane));
 			
+			/*Verifique se as faixas estão correspondentes à ordem de inserção no álbum.*/
 			Assert.assertEquals(1, formsOfFear.getFaixa(chandelier));
 			Assert.assertEquals(2, formsOfFear.getFaixa(elasticHeart));
 			Assert.assertEquals(3, formsOfFear.getFaixa(cellophane));
+			
+			/*Remova algumas músicas do seu álbum.*/
+			formsOfFear.removeMusica(cellophane);
+			formsOfFear.removeMusica(chandelier);
+			
+			/*Verifique se as músicas foram realmente removidas do álbum.*/
+			Assert.assertFalse(formsOfFear.pertenceAlbum(chandelier));
+			Assert.assertFalse(formsOfFear.pertenceAlbum(cellophane));
 			
 		} catch (Exception e) {
 			Assert.fail();
