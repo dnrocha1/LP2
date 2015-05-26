@@ -9,4 +9,9 @@ public class Loja {
 	public Loja() {
 		this.listaUsuarios = new ArrayList<Usuario>();
 	}
+	
+	public boolean criaJogo(){
+		
+	}
+	
 }
