@@ -16,7 +16,9 @@ public class Jogo {
 	private HashSet<String> jogabilidade = new HashSet<String>(Arrays.asList(
 			"online", "offline", "multiplayer", "cooperativo", "competitivo")); //usar ENUM?
 
-	public Jogo() {
+	public Jogo(String nome, double preco) {
+		this.nome = nome;
+		this.preco = preco;
 		this.maiorScore = 0;
 		this.vezesJogadas = 0;
 		this.vezesZerou = 0;
