@@ -10,8 +10,20 @@ public class Loja {
 		this.listaUsuarios = new ArrayList<Usuario>();
 	}
 	
-	public boolean criaJogo(){
+	public Usuario criaUsuario(String nome, String login){
 		
+	}
+	
+	public Jogo criaJogo(String nome, double preco){
+		Jogo novoJogo;
+		try {
+			novoJogo = new Jogo(nome, preco);
+			return novoJogo;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
