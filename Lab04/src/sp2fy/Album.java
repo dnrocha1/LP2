@@ -54,11 +54,15 @@ public class Album {
 		return musicas.lastIndexOf(m) + 1;
 	}
 
+	public Musica getMusica(int faixa) {
+		return this.musicas.get(faixa - 1);
+	}
+
 	public boolean pertenceAlbum(Musica m) {
 		return this.musicas.contains(m);
 	}
-	
-	public boolean removeMusica(Musica m){
+
+	public boolean removeMusica(Musica m) {
 		this.tempoDuracao -= m.getDuracao();
 		return this.musicas.remove(m);
 	}
