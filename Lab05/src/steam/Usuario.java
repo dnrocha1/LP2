@@ -8,6 +8,7 @@ public class Usuario {
 	private String login;
 	private ArrayList<Jogo> jogosComprados;
 	private double dinheiro;
+	private TiposUsuarios tiposUsuarios;
 
 	public Usuario(String nome, String login, double dinheiro) throws Exception {
 		if (nome == null)
@@ -21,7 +22,8 @@ public class Usuario {
 		this.dinheiro = dinheiro;
 		this.jogosComprados = new ArrayList<Jogo>();
 	}
-
+	
+	//Usuario pode comprar jogos.
 	public boolean compraJogo(String nome, double preco) {
 		if (this.dinheiro >= preco) {
 			this.dinheiro -= preco * this.getDesconto();
@@ -37,23 +39,24 @@ public class Usuario {
 		}
 		return false;
 	}
-
+	
+	//Usuario pode adicionar dinheiro ao seu perfil.
 	public void adicionaDinheiro(double dinheiro) throws Exception {
 		if (dinheiro <= 0)
 			throw new Exception("Valor de dinheiro invalido.");
 		this.dinheiro += dinheiro;
 	}
 
-	public TiposUsuarios getTiposUsuarios() {
-		return this.tiposUsuarios;
-	}
-
-	private double getDesconto() { // nao sei se isso ta certo
+	private double getDesconto() {
 		double percDesconto = 0;
-		if (this.getTiposUsuarios() == TiposUsuarios.NOOB)
+		if (tiposUsuarios.equals(TiposUsuarios.NOOB))
 			percDesconto = 0.9;
-		if (this.getTiposUsuarios() == TiposUsuarios.VETERANO)
+		if (tiposUsuarios.equals(TiposUsuarios.VETERANO))
 			percDesconto = 0.8;
 		return percDesconto;
+	}
+	
+	enum TiposUsuarios{
+		NOOB, VETERANO;
 	}
 }
