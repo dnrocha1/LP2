@@ -8,17 +8,18 @@ public class Usuario {
 	private String login;
 	private ArrayList<Jogo> jogosComprados;
 	private double dinheiro;
-	private TiposUsuarios tiposUsuarios;
 
-	public Usuario(String nome, String login) throws Exception {
+	public Usuario(String nome, String login, double dinheiro) throws Exception {
 		if (nome == null)
 			throw new Exception("Nome nao pode ser null.");
 		if (login == null)
 			throw new Exception("Login nao pode ser null.");
+		if (dinheiro < 0)
+			throw new Exception("Dinheiro nao pode ser negativo.");
 		this.nome = nome;
 		this.login = login;
+		this.dinheiro = dinheiro;
 		this.jogosComprados = new ArrayList<Jogo>();
-		this.dinheiro = 0;
 	}
 
 	public boolean compraJogo(String nome, double preco) {
