@@ -12,12 +12,17 @@ public class Jogo {
 	private int vezesZerou;
 	// existem tres tipos de Jogos ​, o RPG (Role Playing Game), Luta e
 	// Plataforma.
-	private String[] tiposDeJogos = { "RPG", "Luta", "Plataforma" }; //usar ENUM?
+	/*
+	 * private String[] tiposDeJogos = { "RPG", "Luta", "Plataforma" }; // usar
+	 * // ENUM?
+	 */
+	private TiposJogos tiposDeJogos;
 	private HashSet<String> jogabilidade = new HashSet<String>(Arrays.asList(
-			"online", "offline", "multiplayer", "cooperativo", "competitivo")); //usar ENUM?
+			"online", "offline", "multiplayer", "cooperativo", "competitivo")); // usar
+																				// ENUM?
 
 	public Jogo(String nome, double preco) throws Exception {
-		if(preco < 0)
+		if (preco < 0)
 			throw new Exception("Preco nao pode ser negativo.");
 		this.nome = nome;
 		this.preco = preco;
@@ -31,4 +36,13 @@ public class Jogo {
 		if (score > maiorScore)
 			maiorScore = score;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
 }
