@@ -1,5 +1,5 @@
 package steam;
 
-public enum tiposJogos {
+public enum TiposJogos {
 	RPG, Luta, Plataforma;
 }
