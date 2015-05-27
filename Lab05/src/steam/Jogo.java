@@ -1,6 +1,5 @@
 package steam;
 
-import java.util.Arrays;
 import java.util.HashSet;
 
 public class Jogo {
@@ -10,11 +9,8 @@ public class Jogo {
 	private int maiorScore;
 	private int vezesJogadas;
 	private int vezesZerou;
-	private TiposJogos tiposDeJogos;
-	private HashSet<String> jogabilidade = new HashSet<String>(Arrays.asList(
-			"online", "offline", "multiplayer", "cooperativo", "competitivo")); // usar
-																				// ENUM?
-
+	private HashSet<Jogabilidade> estilosDeJogo;
+	
 	public Jogo(String nome, double preco) throws Exception {
 		if (preco < 0)
 			throw new Exception("Preco nao pode ser negativo.");
@@ -23,6 +19,7 @@ public class Jogo {
 		this.maiorScore = 0;
 		this.vezesJogadas = 0;
 		this.vezesZerou = 0;
+		this.estilosDeJogo = new HashSet<Jogabilidade>;
 	}
 
 	private void joga(int score, boolean zerouJogo) {
