@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 public class Loja {
 
-	ArrayList<Usuario> usuarios;
-	ArrayList<Jogo> jogos;
-	
+	private ArrayList<Usuario> usuarios;
+	private ArrayList<Jogo> jogos;
+	private double totalArrecado;	
 
 	public Loja() {
 		this.usuarios = new ArrayList<Usuario>();
 		this.jogos = new ArrayList<Jogo>();
+		this.totalArrecado = 0;
 	}
 	
 	public Usuario criaUsuario(String nome, String login, double dinheiro){
@@ -38,12 +39,15 @@ public class Loja {
 		return null;
 	}
 	
-	private boolean adicionaJogo(Usuario usuario, Jogo jogo){ //metodo necessario?
-		return usuario.compraJogo(jogo);
-	}
-	
 	public boolean vendeJogo(Usuario user, Jogo jogo){
-		
+		try {
+			Jogo outroJogo = new Jogo(jogo.getNome(), jogo.getPreco()); //copia do jogo original
+			return user.compraJogo(outroJogo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	public boolean adicionaDinheiro(Usuario usuario, double dinheiro){

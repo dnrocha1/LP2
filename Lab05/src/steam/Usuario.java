@@ -24,9 +24,11 @@ public class Usuario {
 	}
 	
 	//Usuario pode comprar jogos.
-	public boolean compraJogo(Jogo jogo) {
+	public boolean compraJogo(Jogo jogo) throws Exception {
+		if(jogo == null)
+			throw new Exception("Jogo nao foi referenciado.");
 		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco();
+			this.dinheiro -= jogo.getPreco(); //sem o desconto!
 			this.jogosComprados.add(jogo);
 			return true;
 		}
@@ -49,6 +51,13 @@ public class Usuario {
 		return percDesconto;
 	}
 	
+	public String getNome(){
+		return this.nome;
+	}
+	
+	public String getLogin(){
+		return this.login;
+	}
 	enum TiposUsuarios{
 		NOOB, VETERANO;
 	}
