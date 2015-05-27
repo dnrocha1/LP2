@@ -4,17 +4,20 @@ import java.util.ArrayList;
 
 public class Loja {
 
-	ArrayList<Usuario> listaUsuarios;
+	ArrayList<Usuario> usuarios;
+	ArrayList<Jogo> jogos;
+	
 
 	public Loja() {
-		this.listaUsuarios = new ArrayList<Usuario>();
+		this.usuarios = new ArrayList<Usuario>();
+		this.jogos = new ArrayList<Jogo>();
 	}
 	
-	public Usuario criaUsuario(String nome, String login){
+	public Usuario criaUsuario(String nome, String login, double dinheiro){
 		Usuario novoUsuario;
 		try {
-			novoUsuario = new Usuario(nome, login);
-			this.listaUsuarios.add(novoUsuario);
+			novoUsuario = new Usuario(nome, login, dinheiro);
+			this.usuarios.add(novoUsuario);
 			return novoUsuario;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -35,8 +38,12 @@ public class Loja {
 		return null;
 	}
 	
-	private boolean adicionaJogo(Usuario usuario, Jogo jogo){
+	private boolean adicionaJogo(Usuario usuario, Jogo jogo){ //metodo necessario?
 		return usuario.compraJogo(jogo);
+	}
+	
+	public boolean vendeJogo(Usuario user, Jogo jogo){
+		
 	}
 	
 	public boolean adicionaDinheiro(Usuario usuario, double dinheiro){
