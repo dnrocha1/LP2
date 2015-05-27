@@ -19,7 +19,7 @@ public class Jogo {
 		this.maiorScore = 0;
 		this.vezesJogadas = 0;
 		this.vezesZerou = 0;
-		this.estilosDeJogo = new HashSet<Jogabilidade>;
+		this.estilosDeJogo = new HashSet<Jogabilidade>();
 	}
 
 	private void joga(int score, boolean zerouJogo) {
