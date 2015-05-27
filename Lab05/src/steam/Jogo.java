@@ -10,7 +10,7 @@ public class Jogo {
 	private int vezesJogadas;
 	private int vezesZerou;
 	private HashSet<Jogabilidade> estilosDeJogo;
-	
+
 	public Jogo(String nome, double preco) throws Exception {
 		if (preco < 0)
 			throw new Exception("Preco nao pode ser negativo.");
@@ -22,10 +22,12 @@ public class Jogo {
 		this.estilosDeJogo = new HashSet<Jogabilidade>();
 	}
 
-	private void joga(int score, boolean zerouJogo) {
+	public void joga(int score, boolean zerouJogo) {
 		vezesJogadas++;
 		if (score > maiorScore)
 			maiorScore = score;
+		if (zerouJogo)
+			vezesZerou++;
 	}
 
 	public String getNome() {
