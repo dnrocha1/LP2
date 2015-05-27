@@ -2,6 +2,8 @@ package steam;
 
 import java.util.ArrayList;
 
+import steam.Usuario.TiposUsuarios;
+
 public class Loja {
 
 	private ArrayList<Usuario> usuarios;
@@ -62,7 +64,16 @@ public class Loja {
 	}
 	
 	public void imprimeInformacoes(){
-		
+		System.out.print("=== Central P2­CG ===");
+		System.out.println();
+		for (Usuario usuario : usuarios) {
+			System.out.println(usuario.getLogin());
+			if(usuario.getTiposUsuarios().equals(TiposUsuarios.NOOB))
+				System.out.println(usuario.getNome()+" - Jogador Noob");
+			if(usuario.getTiposUsuarios().equals(TiposUsuarios.VETERANO))
+				System.out.println(usuario.getNome()+" - Jogador Veterano");
+			System.out.println("Lista de Jogos:");
+		}		
 	}
 	
 }
