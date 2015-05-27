@@ -21,10 +21,17 @@ public class Usuario {
 		this.dinheiro = 0;
 	}
 
-	public boolean compraJogo(Jogo jogo) {
-		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco() * this.getDesconto();
-			this.jogosComprados.add(jogo);
+	public boolean compraJogo(String nome, double preco) {
+		if (this.dinheiro >= preco) {
+			this.dinheiro -= preco * this.getDesconto();
+			Jogo novoJogo = null;
+			try {
+				novoJogo = new Jogo(nome, preco);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.jogosComprados.add(novoJogo);
 			return true;
 		}
 		return false;
