@@ -51,6 +51,14 @@ public class Usuario {
 		return percDesconto;
 	}
 	
+	public double totalJogosComprados(){
+		double total = 0;
+		for (Jogo jogo : jogosComprados) {
+			total += jogo.getPreco();
+		}
+		return total;
+	}
+	
 	public String getNome(){
 		return this.nome;
 	}
@@ -58,6 +66,18 @@ public class Usuario {
 	public String getLogin(){
 		return this.login;
 	}
+	
+	public TiposUsuarios getTiposUsuarios(){
+		return this.tiposUsuarios;
+	}
+	
+	public String listaJogosComprados(){
+		String texto = "";
+		for (Jogo jogo : jogosComprados) {
+			texto += " "+jogo.getNome()+" - "
+		}
+	}
+	
 	enum TiposUsuarios{
 		NOOB, VETERANO;
 	}
