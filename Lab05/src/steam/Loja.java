@@ -38,4 +38,19 @@ public class Loja {
 		return usuario.compraJogo(jogo);
 	}
 	
+	public boolean adicionaDinheiro(Usuario usuario, double dinheiro){
+		try {
+			usuario.adicionaDinheiro(dinheiro);
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public void imprimeInformacoes(){
+		
+	}
+	
 }
