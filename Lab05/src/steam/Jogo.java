@@ -9,7 +9,7 @@ public class Jogo {
 	private int maiorScore;
 	private int vezesJogadas;
 	private int vezesZerou;
-	private HashSet<Jogabilidade> estilosDeJogo;
+	private HashSet<EstilosDeJogo> EstilosDeJogo;
 
 	public Jogo(String nome, double preco) throws Exception {
 		if (preco < 0)
@@ -19,7 +19,7 @@ public class Jogo {
 		this.maiorScore = 0;
 		this.vezesJogadas = 0;
 		this.vezesZerou = 0;
-		this.estilosDeJogo = new HashSet<Jogabilidade>();
+		this.EstilosDeJogo = new HashSet<EstilosDeJogo>();
 	}
 
 	public void joga(int score, boolean zerouJogo) {
@@ -36,6 +36,10 @@ public class Jogo {
 
 	public double getPreco() {
 		return preco;
+	}
+	
+	enum EstilosDeJogo{
+		ONLINE, OFFLINE, MULTIPLAYER, COOPERATIVO, COMPETITIVO;
 	}
 
 }
