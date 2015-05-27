@@ -10,12 +10,6 @@ public class Jogo {
 	private int maiorScore;
 	private int vezesJogadas;
 	private int vezesZerou;
-	// existem tres tipos de Jogos ​, o RPG (Role Playing Game), Luta e
-	// Plataforma.
-	/*
-	 * private String[] tiposDeJogos = { "RPG", "Luta", "Plataforma" }; // usar
-	 * // ENUM?
-	 */
 	private TiposJogos tiposDeJogos;
 	private HashSet<String> jogabilidade = new HashSet<String>(Arrays.asList(
 			"online", "offline", "multiplayer", "cooperativo", "competitivo")); // usar
