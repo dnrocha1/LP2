@@ -14,6 +14,7 @@ public class Loja {
 		Usuario novoUsuario;
 		try {
 			novoUsuario = new Usuario(nome, login);
+			this.listaUsuarios.add(novoUsuario);
 			return novoUsuario;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -34,7 +35,7 @@ public class Loja {
 		return null;
 	}
 	
-	public boolean adicionaJogo(Usuario usuario, Jogo jogo){
+	private boolean adicionaJogo(Usuario usuario, Jogo jogo){
 		return usuario.compraJogo(jogo);
 	}
 	
