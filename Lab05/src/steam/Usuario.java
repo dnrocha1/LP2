@@ -2,13 +2,12 @@ package steam;
 
 import java.util.ArrayList;
 
-public class Usuario {
+public abstract class Usuario {
 
 	private String nome;
 	private String login;
 	private ArrayList<Jogo> jogosComprados;
 	private double dinheiro;
-	private TiposUsuarios tiposUsuarios;
 
 	public Usuario(String nome, String login, double dinheiro) throws Exception {
 		if (nome == null)
@@ -60,10 +59,6 @@ public class Usuario {
 		return this.login;
 	}
 	
-	public TiposUsuarios getTiposUsuarios(){
-		return this.tiposUsuarios;
-	}
-	
 	public String listaJogosComprados(){
 		String texto = "";
 		for (Jogo jogo : jogosComprados) {
@@ -71,7 +66,4 @@ public class Usuario {
 		}
 	}
 	
-	enum TiposUsuarios{
-		NOOB, VETERANO;
-	}
 }
