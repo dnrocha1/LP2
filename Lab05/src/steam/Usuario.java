@@ -41,7 +41,7 @@ public abstract class Usuario {
 		this.dinheiro += dinheiro;
 	}
 
-	public abstract double getDesconto();
+	public abstract double getDesconto(); //metodo abstrato ou nao? abstrato pois cada filho tera o metodo, mas nao necessariamente tera que usa-lo
 	
 	public double totalJogosComprados(){
 		double total = 0;
