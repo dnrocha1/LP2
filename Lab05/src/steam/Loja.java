@@ -2,7 +2,6 @@ package steam;
 
 import java.util.ArrayList;
 
-import steam.Usuario.TiposUsuarios;
 
 public class Loja {
 
@@ -16,20 +15,23 @@ public class Loja {
 		this.totalArrecado = 0;
 	}
 	
-	public Usuario criaUsuario(String nome, String login, double dinheiro){
-		Usuario novoUsuario;
+	public Usuario criaUsuario(String nome, String login, double dinheiro, String tipoUsuario){
+		Usuario novoUsuario = null;
 		try {
-			novoUsuario = new Usuario(nome, login, dinheiro);
+			if(tipoUsuario.equalsIgnoreCase("noob"))
+				novoUsuario = new Noob(nome, login, dinheiro);
+			if(tipoUsuario.equalsIgnoreCase("veterano"))
+				novoUsuario = new Veterano(nome, login, dinheiro);
 			this.usuarios.add(novoUsuario);
 			return novoUsuario;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return novoUsuario;
 	}
 	
-	public Jogo criaJogo(String nome, double preco){
+	public Jogo criaJogo(String nome, double preco){ //chamar JogoFactory
 		Jogo novoJogo;
 		try {
 			novoJogo = new Jogo(nome, preco);
@@ -68,10 +70,12 @@ public class Loja {
 		System.out.println();
 		for (Usuario usuario : usuarios) {
 			System.out.println(usuario.getLogin());
-			if(usuario.getTiposUsuarios().equals(TiposUsuarios.NOOB))
+			if(usuario instanceof Noob){
 				System.out.println(usuario.getNome()+" - Jogador Noob");
-			if(usuario.getTiposUsuarios().equals(TiposUsuarios.VETERANO))
+			}
+			if(usuario instanceof Veterano){
 				System.out.println(usuario.getNome()+" - Jogador Veterano");
+			}
 			System.out.println("Lista de Jogos:");
 		}		
 	}
