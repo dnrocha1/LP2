@@ -9,7 +9,7 @@ public class Jogo {
 	private int maiorScore;
 	private int vezesJogadas;
 	private int vezesZerou;
-	private EstilosDeJogo estilosDeJogo;
+	private HashSet<EstilosDeJogo> estilosDeJogo;
 
 	public Jogo(String nome, double preco) throws Exception {
 		if (preco < 0)
