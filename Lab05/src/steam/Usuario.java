@@ -41,7 +41,7 @@ public abstract class Usuario {
 		this.dinheiro += dinheiro;
 	}
 
-	private abstract double getDesconto();
+	public abstract double getDesconto();
 	
 	public double totalJogosComprados(){
 		double total = 0;
@@ -59,7 +59,7 @@ public abstract class Usuario {
 		return this.login;
 	}
 	
-	public String listaJogosComprados(){
+	public String listaJogosComprados(){ //terminar depois
 		String texto = "";
 		for (Jogo jogo : jogosComprados) {
 			texto += " "+jogo.getNome()+" - "
