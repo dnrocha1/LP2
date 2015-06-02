@@ -42,14 +42,7 @@ public class Usuario {
 		this.dinheiro += dinheiro;
 	}
 
-	private double getDesconto() {
-		double percDesconto = 0;
-		if (tiposUsuarios.equals(TiposUsuarios.NOOB))
-			percDesconto = 0.9;
-		if (tiposUsuarios.equals(TiposUsuarios.VETERANO))
-			percDesconto = 0.8;
-		return percDesconto;
-	}
+	private abstract double getDesconto();
 	
 	public double totalJogosComprados(){
 		double total = 0;
