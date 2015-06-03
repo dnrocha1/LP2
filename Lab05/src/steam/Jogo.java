@@ -19,6 +19,7 @@ public class Jogo {
 		this.maiorScore = 0;
 		this.vezesJogadas = 0;
 		this.vezesZerou = 0;
+		estilosDeJogo = new HashSet<Jogo.EstilosDeJogo>();
 	}
 
 	public void joga(int score, boolean zerouJogo) {
