@@ -21,49 +21,67 @@ public abstract class Usuario {
 		this.dinheiro = dinheiro;
 		this.jogosComprados = new ArrayList<Jogo>();
 	}
-	
-	//Usuario pode comprar jogos.
+
+	// Usuario pode comprar jogos.
 	public boolean compraJogo(Jogo jogo) throws Exception {
-		if(jogo == null)
+		if (jogo == null)
 			throw new Exception("Jogo nao foi referenciado.");
 		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco(); //sem o desconto!
-			this.jogosComprados.add(jogo);
+			this.dinheiro -= jogo.getPreco(); // SEM O DESCONTO!
+			this.adicionaJogo(jogo);
 			return true;
 		}
 		return false;
 	}
-	
-	//Usuario pode adicionar dinheiro ao seu perfil.
+
+	// Usuario pode adicionar dinheiro ao seu perfil.
 	public void adicionaDinheiro(double dinheiro) throws Exception {
 		if (dinheiro <= 0)
 			throw new Exception("Valor de dinheiro invalido.");
 		this.dinheiro += dinheiro;
 	}
 
-	public abstract double getDesconto(); //metodo abstrato ou nao? abstrato pois cada filho tera o metodo, mas nao necessariamente tera que usa-lo
-	
-	public double totalJogosComprados(){
+	public abstract double getDesconto(); // metodo abstrato ou nao? abstrato
+											// pois cada filho tera o metodo,
+											// mas nao necessariamente tera que
+											// usa-lo
+
+	public double totalJogosComprados() {
 		double total = 0;
 		for (Jogo jogo : jogosComprados) {
 			total += jogo.getPreco();
 		}
 		return total;
 	}
-	
-	public String getNome(){
-		return this.nome;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public double getDinheiro() {
+		return dinheiro;
 	}
 	
-	public String getLogin(){
-		return this.login;
+	public void setDinheiro(double dinheiro) {
+		this.dinheiro = dinheiro;
 	}
-	
+
+	protected boolean adicionaJogo(Jogo novoJogo) throws Exception {
+		if (novoJogo == null) {
+			throw new Exception("Jogo nao foi referenciado.");
+		}
+		this.jogosComprados.add(novoJogo);
+		return true;
+	}
+
 	public String listaJogosComprados(){ //terminar depois
 		String texto = "";
 		for (Jogo jogo : jogosComprados) {
 			texto += " "+jogo.getNome()+" - "
 		}
 	}
-	
 }
