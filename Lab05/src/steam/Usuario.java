@@ -6,10 +6,12 @@ public abstract class Usuario {
 
 	private String nome;
 	private String login;
-	private ArrayList<Jogo> jogosComprados;
+	private double desconto = 0;
 	private double dinheiro;
+	private ArrayList<Jogo> jogosComprados;
 
-	public Usuario(String nome, String login, double dinheiro) throws Exception {
+	public Usuario(String nome, String login, double dinheiro)
+			throws Exception {
 		if (nome == null)
 			throw new Exception("Nome nao pode ser null.");
 		if (login == null)
@@ -27,7 +29,7 @@ public abstract class Usuario {
 		if (jogo == null)
 			throw new Exception("Jogo nao foi referenciado.");
 		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco(); // SEM O DESCONTO!
+			this.dinheiro -= jogo.getPreco() * this.desconto; //sobrescrita correta??
 			this.adicionaJogo(jogo);
 			return true;
 		}
@@ -65,7 +67,7 @@ public abstract class Usuario {
 	public double getDinheiro() {
 		return dinheiro;
 	}
-	
+
 	public void setDinheiro(double dinheiro) {
 		this.dinheiro = dinheiro;
 	}
