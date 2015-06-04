@@ -1,5 +1,6 @@
 package steam;
 
+import java.util.Collections;
 import java.util.HashSet;
 
 public class Jogo {
@@ -11,7 +12,7 @@ public class Jogo {
 	private int vezesZerou;
 	private HashSet<EstilosDeJogo> estilosDeJogo;
 
-	public Jogo(String nome, double preco) throws Exception {
+	public Jogo(String nome, double preco, EstilosDeJogo... estilosDeJogo) throws Exception {
 		if (preco < 0)
 			throw new Exception("Preco nao pode ser negativo.");
 		this.nome = nome;
@@ -19,7 +20,8 @@ public class Jogo {
 		this.maiorScore = 0;
 		this.vezesJogadas = 0;
 		this.vezesZerou = 0;
-		estilosDeJogo = new HashSet<Jogo.EstilosDeJogo>();
+		this.estilosDeJogo = new HashSet<Jogo.EstilosDeJogo>();
+		Collections.addAll(this.estilosDeJogo, estilosDeJogo);
 	}
 
 	public void joga(int score, boolean zerouJogo) {
