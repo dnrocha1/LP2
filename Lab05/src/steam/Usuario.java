@@ -64,8 +64,22 @@ public abstract class Usuario {
 		return dinheiro;
 	}
 	
-	public double getDesconto(){
-		return desconto;
+	public abstract double getDesconto();
+	
+	public void jogaUsuario(String nomeJogo, int score, boolean zerouJogo) throws Exception{
+		Jogo jogo = buscaJogo(nomeJogo);
+		if (jogo == null)
+			throw new Exception("Jogo nao foi comprado ou nao existe.");
+		jogo.joga(score, zerouJogo);
+	}
+	
+	private Jogo buscaJogo(String nomeJogo){
+		Jogo jogo = null;
+		for (Jogo outroJogo : jogosComprados) {
+			if(outroJogo.getNome().equalsIgnoreCase(nomeJogo))
+				jogo = outroJogo;
+		}
+		return jogo;
 	}
 
 	private boolean adicionaJogo(Jogo novoJogo) throws Exception {
@@ -75,16 +89,16 @@ public abstract class Usuario {
 		this.jogosComprados.add(novoJogo);
 		return true;
 	}
-
+	
 	public void listaJogosComprados() {
 		String texto = "";
 		for (Jogo jogo : jogosComprados) {
 			if (jogo instanceof RPG)
-				texto += " + " + jogo.getNome() + " - RPG:";
+				texto += "+ " + jogo.getNome() + " - RPG:";
 			if (jogo instanceof Luta)
-				texto += " + " + jogo.getNome() + " - Luta:";
+				texto += "+ " + jogo.getNome() + " - Luta:";
 			if (jogo instanceof Plataforma)
-				texto += " + " + jogo.getNome() + " - Plataforma:";
+				texto += "+ " + jogo.getNome() + " - Plataforma:";
 			System.out.println(texto);
 			jogo.listaInformacoes();
 		}

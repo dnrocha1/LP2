@@ -47,12 +47,18 @@ public class Loja {
 		return novoJogo;
 	}
 
-	public boolean vendeJogo(Usuario user, Jogo jogo) { // preciso copiar o jogo
-														// original
+	public boolean vendeJogo(Usuario user, Jogo jogo) {
 		if (user.getDinheiro() >= jogo.getPreco()) {
 			try {
 				totalArrecado += jogo.getPreco() * user.getDesconto();
-				Jogo novoJogo = jogo.clone();
+				Jogo novoJogo = null;
+				if (jogo.getClass().getSimpleName().equalsIgnoreCase("RPG"))
+					novoJogo = new RPG(jogo);
+				if (jogo.getClass().getSimpleName().equalsIgnoreCase("Luta"))
+					novoJogo = new Luta(jogo);
+				if (jogo.getClass().getSimpleName()
+						.equalsIgnoreCase("Plataforma"))
+					novoJogo = new Plataforma(jogo);
 				user.compraJogo(novoJogo);
 				return true;
 			} catch (Exception e) {
@@ -90,7 +96,8 @@ public class Loja {
 			System.out.println("Total de preco dos jogos: R$ "
 					+ usuario.totalJogosComprados());
 			System.out.println("нннннннннннннннннннннннннннннннннннннннннннн");
-			System.out.println("Total arrecadado com vendas de jogos: R$ " + totalArrecado);
+			System.out.println("Total arrecadado com vendas de jogos: R$ "
+					+ this.totalArrecado);
 		}
 	}
 

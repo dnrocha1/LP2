@@ -25,6 +25,15 @@ public abstract class Jogo {
 		Collections.addAll(this.estilosDeJogo, estilosDeJogo);
 	}
 
+	protected Jogo(Jogo jogo) {
+		this.nome = jogo.getNome();
+		this.preco = jogo.getPreco();
+		this.maiorScore = jogo.getMaiorScore();
+		this.vezesJogadas = jogo.vezesJogadas;
+		this.vezesZerou = jogo.vezesZerou;
+		this.estilosDeJogo = jogo.getEstilosDeJogo();
+	}
+
 	public void joga(int score, boolean zerouJogo) {
 		vezesJogadas++;
 		if (score > maiorScore)
@@ -41,17 +50,26 @@ public abstract class Jogo {
 		return preco;
 	}
 
+	public HashSet<EstilosDeJogo> getEstilosDeJogo() {
+		return estilosDeJogo;
+	}
+	
+	public int getMaiorScore() {
+		return maiorScore;
+	}
+
+	public int getVezesJogadas() {
+		return vezesJogadas;
+	}
+
+	public int getVezesZerou() {
+		return vezesZerou;
+	}
+
 	public void listaInformacoes() {
 		System.out.println("==> Jogou " + vezesJogadas + " vez(es)");
 		System.out.println("==> Zerou " + vezesZerou + " vez(es)");
 		System.out.println("==> Maior score: " + maiorScore);
-	}
-
-	@Override
-	public Jogo clone() throws CloneNotSupportedException {
-		Jogo j = (Jogo) super.clone();
-		j.estilosDeJogo = new HashSet<EstilosDeJogo>(estilosDeJogo);
-		return j;
 	}
 
 }

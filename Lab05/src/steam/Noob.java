@@ -8,4 +8,9 @@ public class Noob extends Usuario {
 		super(nome, login, dinheiro);
 	}
 
+	@Override
+	public double getDesconto() {
+		return desconto;
+	}
+
 }
