@@ -6,12 +6,11 @@ public abstract class Usuario {
 
 	private String nome;
 	private String login;
-	private double desconto = 0;
 	private double dinheiro;
+	private double desconto = 0;
 	private ArrayList<Jogo> jogosComprados;
 
-	public Usuario(String nome, String login, double dinheiro)
-			throws Exception {
+	public Usuario(String nome, String login, double dinheiro) throws Exception {
 		if (nome == null)
 			throw new Exception("Nome nao pode ser null.");
 		if (login == null)
@@ -29,7 +28,9 @@ public abstract class Usuario {
 		if (jogo == null)
 			throw new Exception("Jogo nao foi referenciado.");
 		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco() * this.desconto; //sobrescrita correta??
+			this.dinheiro -= jogo.getPreco() * desconto; // sobrescrita e
+															// desconto aplicado
+															// certo?
 			this.adicionaJogo(jogo);
 			return true;
 		}
@@ -42,11 +43,6 @@ public abstract class Usuario {
 			throw new Exception("Valor de dinheiro invalido.");
 		this.dinheiro += dinheiro;
 	}
-
-	public abstract double getDesconto(); // metodo abstrato ou nao? abstrato
-											// pois cada filho tera o metodo,
-											// mas nao necessariamente tera que
-											// usa-lo
 
 	public double totalJogosComprados() {
 		double total = 0;
@@ -67,12 +63,12 @@ public abstract class Usuario {
 	public double getDinheiro() {
 		return dinheiro;
 	}
-
-	public void setDinheiro(double dinheiro) {
-		this.dinheiro = dinheiro;
+	
+	public double getDesconto(){
+		return desconto;
 	}
 
-	protected boolean adicionaJogo(Jogo novoJogo) throws Exception {
+	private boolean adicionaJogo(Jogo novoJogo) throws Exception {
 		if (novoJogo == null) {
 			throw new Exception("Jogo nao foi referenciado.");
 		}
@@ -80,10 +76,18 @@ public abstract class Usuario {
 		return true;
 	}
 
-	public String listaJogosComprados(){ //terminar depois
+	public void listaJogosComprados() {
 		String texto = "";
 		for (Jogo jogo : jogosComprados) {
-			texto += " "+jogo.getNome()+" - "
+			if (jogo instanceof RPG)
+				texto += " + " + jogo.getNome() + " - RPG:";
+			if (jogo instanceof Luta)
+				texto += " + " + jogo.getNome() + " - Luta:";
+			if (jogo instanceof Plataforma)
+				texto += " + " + jogo.getNome() + " - Plataforma:";
+			System.out.println(texto);
+			jogo.listaInformacoes();
 		}
 	}
+	
 }

@@ -9,9 +9,4 @@ public class Veterano extends Usuario {
 		super(nome, login, dinheiro);
 	}
 
-	@Override
-	public double getDesconto() {
-		return 0.8;
-	}
-	
 }
