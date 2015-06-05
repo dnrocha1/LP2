@@ -10,7 +10,6 @@ public abstract class Usuario {
 	private double desconto = 0;
 	private ArrayList<Jogo> jogosComprados;
 	private int x2p;
-	private final int MAX_SCORE = 10000;
 
 	public Usuario(String nome, String login, double dinheiro) throws Exception {
 		if (nome == null)
@@ -68,9 +67,13 @@ public abstract class Usuario {
 		return x2p;
 	}
 	
+	public void setX2p(int novoX2p){
+		this.x2p = novoX2p;
+	}
+	
 	public abstract double getDesconto();
 	
-	public void jogaUsuario(String nomeJogo, int score, boolean zerouJogo) throws Exception{
+	/*public void jogaUsuario(String nomeJogo, int score, boolean zerouJogo) throws Exception{
 		Jogo jogo = buscaJogo(nomeJogo);
 		if (jogo == null)
 			throw new Exception("Jogo nao foi comprado ou nao existe.");
@@ -84,9 +87,13 @@ public abstract class Usuario {
 		if (jogo instanceof Plataforma)
 			if(zerouJogo)
 				this.x2p += 20;
-	}
+	}*/
 	
-	private Jogo buscaJogo(String nomeJogo){
+	public abstract void recompensar(String nomeJogo,int score,boolean zerou) throws Exception;
+	
+	public abstract void punir(String nomeJogo, int score, boolean zerou) throws Exception;
+	
+	protected Jogo buscaJogo(String nomeJogo){
 		Jogo jogo = null;
 		for (Jogo outroJogo : jogosComprados) {
 			if(outroJogo.getNome().equalsIgnoreCase(nomeJogo))
