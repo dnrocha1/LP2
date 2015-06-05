@@ -52,12 +52,11 @@ public class Loja {
 			try {
 				totalArrecado += jogo.getPreco() * user.getDesconto();
 				Jogo novoJogo = null;
-				if (jogo.getClass().getSimpleName().equalsIgnoreCase("RPG"))
+				if (jogo instanceof RPG)
 					novoJogo = new RPG(jogo);
-				if (jogo.getClass().getSimpleName().equalsIgnoreCase("Luta"))
+				if (jogo instanceof Luta)
 					novoJogo = new Luta(jogo);
-				if (jogo.getClass().getSimpleName()
-						.equalsIgnoreCase("Plataforma"))
+				if (jogo instanceof Plataforma)
 					novoJogo = new Plataforma(jogo);
 				user.compraJogo(novoJogo);
 				return true;
@@ -85,11 +84,12 @@ public class Loja {
 		System.out.println();
 		for (Usuario usuario : usuarios) {
 			System.out.println(usuario.getLogin());
+			System.out.println(usuario.getNome());
 			if (usuario instanceof Noob) {
-				System.out.println(usuario.getNome() + " - Jogador Noob");
+				System.out.println("Jogador Noob: " + usuario.getX2p() + " x2p");
 			}
 			if (usuario instanceof Veterano) {
-				System.out.println(usuario.getNome() + " - Jogador Veterano");
+				System.out.println("Jogador Veterano: " + usuario.getX2p() + "x2p");
 			}
 			System.out.println("Lista de Jogos:");
 			usuario.listaJogosComprados();

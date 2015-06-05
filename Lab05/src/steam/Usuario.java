@@ -9,6 +9,8 @@ public abstract class Usuario {
 	private double dinheiro;
 	private double desconto = 0;
 	private ArrayList<Jogo> jogosComprados;
+	private int x2p;
+	private final int MAX_SCORE = 10000;
 
 	public Usuario(String nome, String login, double dinheiro) throws Exception {
 		if (nome == null)
@@ -20,24 +22,22 @@ public abstract class Usuario {
 		this.nome = nome;
 		this.login = login;
 		this.dinheiro = dinheiro;
+		this.x2p = 0;
 		this.jogosComprados = new ArrayList<Jogo>();
 	}
 
-	// Usuario pode comprar jogos.
 	public boolean compraJogo(Jogo jogo) throws Exception {
 		if (jogo == null)
 			throw new Exception("Jogo nao foi referenciado.");
+		this.x2p = (int) (10 * jogo.getPreco());
 		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco() * desconto; // sobrescrita e
-															// desconto aplicado
-															// certo?
+			this.dinheiro -= jogo.getPreco() * desconto; 
 			this.adicionaJogo(jogo);
 			return true;
 		}
 		return false;
 	}
 
-	// Usuario pode adicionar dinheiro ao seu perfil.
 	public void adicionaDinheiro(double dinheiro) throws Exception {
 		if (dinheiro <= 0)
 			throw new Exception("Valor de dinheiro invalido.");
@@ -64,13 +64,26 @@ public abstract class Usuario {
 		return dinheiro;
 	}
 	
+	public int getX2p(){
+		return x2p;
+	}
+	
 	public abstract double getDesconto();
 	
 	public void jogaUsuario(String nomeJogo, int score, boolean zerouJogo) throws Exception{
 		Jogo jogo = buscaJogo(nomeJogo);
 		if (jogo == null)
 			throw new Exception("Jogo nao foi comprado ou nao existe.");
+		if (score < 0)
+			throw new Exception("Score nao pode ser negativo.");
 		jogo.joga(score, zerouJogo);
+		if (jogo instanceof RPG)
+			this.x2p += 10;
+		if (jogo instanceof Luta)
+			this.x2p += score >= MAX_SCORE ? 100 : (score/1000);
+		if (jogo instanceof Plataforma)
+			if(zerouJogo)
+				this.x2p += 20;
 	}
 	
 	private Jogo buscaJogo(String nomeJogo){

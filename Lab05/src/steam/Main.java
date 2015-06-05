@@ -12,8 +12,10 @@ public class Main {
 		loja.vendeJogo(user1, magicka);
 		try {
 			user1.jogaUsuario(magicka.getNome(), 5, false);
-			user1.jogaUsuario(magicka.getNome(), 20, true);
-			user1.jogaUsuario(magicka.getNome(), 15, true);
+			user1.jogaUsuario(magicka.getNome(), 20, false);
+			user1.jogaUsuario(magicka.getNome(), 15, false);
+			user1.jogaUsuario(magicka.getNome(), 15, false);
+			user1.jogaUsuario(magicka.getNome(), 15, false);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
