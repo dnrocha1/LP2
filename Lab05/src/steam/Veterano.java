@@ -28,11 +28,12 @@ public class Veterano extends Usuario {
 		if (score < 0)
 			throw new Exception("Score nao pode ser negativo.");
 		int x2pJogo = jogo.joga(score, zerou);
-		this.setX2p(x2pAtual + x2pJogo);
+		x2pAtual += x2pJogo;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.ONLINE))
-			this.setX2p(x2pAtual + 10);
+			x2pAtual += 10;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.COOPERATIVO))
-			this.setX2p(x2pAtual + 20);
+			x2pAtual += 20;
+		this.setX2p(x2pAtual);
 	}
 
 	@Override
@@ -45,11 +46,12 @@ public class Veterano extends Usuario {
 		if (score < 0)
 			throw new Exception("Score nao pode ser negativo.");
 		int x2pJogo = jogo.joga(score, zerou);
-		this.setX2p(x2pAtual + x2pJogo);
+		x2pAtual += x2pJogo;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.COMPETITIVO))
-			this.setX2p(x2pAtual - 20);
+			x2pAtual -= 20;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.COOPERATIVO))
-			this.setX2p(x2pAtual - 20);
+			x2pAtual -= 20;
+		this.setX2p(x2pAtual);
 	}
 
 	@Override

@@ -8,7 +8,6 @@ public class JogoFactory {
 		try {
 			novoJogo = new RPG(nome, preco, estilosDeJogo);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return novoJogo;
@@ -20,7 +19,6 @@ public class JogoFactory {
 		try {
 			novoJogo = new Luta(nome, preco, estilosDeJogo);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return novoJogo;
@@ -32,7 +30,6 @@ public class JogoFactory {
 		try {
 			novoJogo = new Plataforma(nome, preco, estilosDeJogo);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return novoJogo;

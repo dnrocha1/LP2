@@ -11,10 +11,12 @@ public abstract class Jogo {
 	private int vezesJogadas;
 	private int vezesZerou;
 	private HashSet<EstilosDeJogo> estilosDeJogo;
-	private final int MAX_SCORE = 10000;
+	private final int MAX_SCORE = 100000;
 
 	public Jogo(String nome, double preco, EstilosDeJogo... estilosDeJogo)
 			throws Exception {
+		if (nome == null)
+			throw new Exception("Nome nao pode ser null.");
 		if (preco < 0)
 			throw new Exception("Preco nao pode ser negativo.");
 		this.nome = nome;
@@ -45,9 +47,9 @@ public abstract class Jogo {
 		if (this instanceof RPG)
 			novoX2p += 10;
 		if (this instanceof Luta)
-			novoX2p += score >= MAX_SCORE ? 100 : (score/1000);
+			novoX2p += score >= MAX_SCORE ? 100 : (score / 1000);
 		if (this instanceof Plataforma)
-			if(zerouJogo)
+			if (zerouJogo)
 				novoX2p += 20;
 		return novoX2p;
 	}
@@ -63,7 +65,7 @@ public abstract class Jogo {
 	public HashSet<EstilosDeJogo> getEstilosDeJogo() {
 		return estilosDeJogo;
 	}
-	
+
 	public int getMaiorScore() {
 		return maiorScore;
 	}

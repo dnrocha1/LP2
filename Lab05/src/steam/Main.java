@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Loja loja = new Loja();
-		loja.criaUsuario("Francisco Neto", "francisco.neto", 400, "Noob");
+		/*loja.criaUsuario("Francisco Neto", "francisco.neto", 400, "Noob");
 		loja.criaJogo("Magicka", 25, "RPG", EstilosDeJogo.OFFLINE,
 				EstilosDeJogo.MULTIPLAYER);
 		loja.vendeJogo("francisco.neto", "Magicka");
@@ -20,7 +20,11 @@ public class Main {
 																		// ta
 																		// recompensando
 		loja.upgrade("francisco.neto");
-		//loja.downgrade("francisco.neto");
+		//loja.downgrade("francisco.neto");*/
+		loja.criaUsuario("Francisco Neto", "francisco.neto", 400, "Noob");
+		loja.criaJogo("Magicka", 25, "Luta", EstilosDeJogo.OFFLINE, EstilosDeJogo.MULTIPLAYER);
+		loja.vendeJogo("francisco.neto", "Magicka");
+		loja.recompensar("francisco.neto", "Magicka", 20000, false);
 		loja.imprimeInformacoes();
 	}
 

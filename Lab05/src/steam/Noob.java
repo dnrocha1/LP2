@@ -26,11 +26,12 @@ public class Noob extends Usuario {
 		if (score < 0)
 			throw new Exception("Score nao pode ser negativo.");
 		int x2pJogo = jogo.joga(score, zerou);
-		this.setX2p(x2pAtual + x2pJogo);
+		x2pAtual += x2pJogo;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.OFFLINE))
-			this.setX2p(x2pAtual + 30);
+			x2pAtual += 30;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.MULTIPLAYER))
-			this.setX2p(x2pAtual + 10);
+			x2pAtual += 10;
+		this.setX2p(x2pAtual);
 	}
 
 	@Override
@@ -43,13 +44,14 @@ public class Noob extends Usuario {
 		if (score < 0)
 			throw new Exception("Score nao pode ser negativo.");
 		int x2pJogo = jogo.joga(score, zerou);
-		this.setX2p(x2pAtual + x2pJogo);
+		x2pAtual += x2pJogo;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.ONLINE))
-			this.setX2p(x2pAtual - 10);
+			x2pAtual -= 10;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.COMPETITIVO))
-			this.setX2p(x2pAtual - 20);
+			x2pAtual -= 20;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.COOPERATIVO))
-			this.setX2p(x2pAtual - 50);
+			x2pAtual -= 50;
+		this.setX2p(x2pAtual);
 	}
 
 	@Override

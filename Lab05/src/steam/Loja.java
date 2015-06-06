@@ -20,6 +20,8 @@ public class Loja {
 			String tipoUsuario) {
 		Usuario novoUsuario = null;
 		try {
+			if (tipoUsuario == null)
+				throw new Exception("Tipo de usuario nao pode ser null.");
 			if (tipoUsuario.equalsIgnoreCase("noob"))
 				novoUsuario = new Noob(nome, login, dinheiro);
 			if (tipoUsuario.equalsIgnoreCase("veterano"))
@@ -58,7 +60,8 @@ public class Loja {
 					novoJogo = new Plataforma(jogo);
 				user.compraJogo(novoJogo);
 				return true;
-
+			} else {
+				throw new Exception("O usuario nao tem dinheiro suficiente.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,7 +153,7 @@ public class Loja {
 				jogo = outroJogo;
 		}
 		if (jogo == null)
-			throw new Exception("Jogo invalido");
+			throw new Exception("Jogo invalido.");
 		return jogo;
 	}
 
