@@ -35,7 +35,7 @@ public class Loja {
 	}
 
 	public Jogo criaJogo(String nome, double preco, String tipoDeJogo,
-			EstilosDeJogo... estilosDeJogo) { // chamar JogoFactory OK
+			EstilosDeJogo... estilosDeJogo) {
 		Jogo novoJogo = null;
 		if (tipoDeJogo.equalsIgnoreCase("RPG"))
 			novoJogo = jogoFactory.criaJogoRPG(nome, preco, estilosDeJogo);
@@ -89,6 +89,7 @@ public class Loja {
 		if (user.getX2p() < LIMITE_X2P)
 			throw new Exception("Upgrade indisponivel.");
 		int index = usuarios.indexOf(user);
+		usuarios.remove(index);
 		Usuario novoVeterano = new Veterano(user);
 		usuarios.add(index, novoVeterano);
 	}
@@ -102,6 +103,7 @@ public class Loja {
 		if (user.getX2p() >= LIMITE_X2P)
 			throw new Exception("Downgrade indisponivel.");
 		int index = usuarios.indexOf(user);
+		usuarios.remove(index);
 		Usuario novoNoob = new Noob(user);
 		usuarios.add(index, novoNoob);
 	}
@@ -127,7 +129,7 @@ public class Loja {
 			}
 			if (usuario instanceof Veterano) {
 				System.out.println("Jogador Veterano: " + usuario.getX2p()
-						+ "x2p");
+						+ " x2p");
 			}
 			System.out.println("Lista de Jogos:");
 			usuario.listaJogosComprados();
