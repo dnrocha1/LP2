@@ -22,9 +22,9 @@ public class Main {
 		loja.upgrade("francisco.neto");
 		//loja.downgrade("francisco.neto");*/
 		loja.criaUsuario("Francisco Neto", "francisco.neto", 400, "Noob");
-		loja.criaJogo("Magicka", 25, "Luta", EstilosDeJogo.OFFLINE, EstilosDeJogo.MULTIPLAYER);
+		loja.criaJogo("Magicka", 25, "Plataforma", EstilosDeJogo.OFFLINE, EstilosDeJogo.MULTIPLAYER);
 		loja.vendeJogo("francisco.neto", "Magicka");
-		loja.recompensar("francisco.neto", "Magicka", 20000, false);
+		loja.recompensar("francisco.neto", "Magicka", 20000, true);
 		loja.imprimeInformacoes();
 	}
 
