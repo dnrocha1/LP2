@@ -24,6 +24,15 @@ public abstract class Usuario {
 		this.x2p = 0;
 		this.jogosComprados = new ArrayList<Jogo>();
 	}
+	
+	protected Usuario(Usuario user){
+		this.nome = user.getNome();
+		this.login = user.getLogin();
+		this.dinheiro = user.getDinheiro();
+		this.desconto = user.getDesconto();
+		this.jogosComprados = user.jogosComprados;
+		this.x2p = user.getX2p();
+	}
 
 	public boolean compraJogo(Jogo jogo) throws Exception {
 		if (jogo == null)
@@ -67,6 +76,10 @@ public abstract class Usuario {
 		return x2p;
 	}
 	
+	public ArrayList<Jogo> getJogosComprados() {
+		return jogosComprados;
+	}
+
 	public void setX2p(int novoX2p){
 		this.x2p = novoX2p;
 	}

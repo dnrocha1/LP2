@@ -8,6 +8,7 @@ public class Loja {
 	private ArrayList<Jogo> jogos;
 	private double totalArrecado;
 	private JogoFactory jogoFactory;
+	private final int LIMITE_X2P = 1000;
 
 	public Loja() {
 		this.usuarios = new ArrayList<Usuario>();
@@ -79,6 +80,41 @@ public class Loja {
 		return false;
 	}
 
+	public void upgrade(String login) throws Exception {
+		Usuario user = this.buscaUsuario(login);
+		if (user == null)
+			throw new Exception("Login invalido.");
+		if (user instanceof Veterano)
+			throw new Exception("Upgrade indisponivel.");
+		if (user.getX2p() < LIMITE_X2P)
+			throw new Exception("Upgrade indisponivel.");
+		int index = usuarios.indexOf(user);
+		Usuario novoVeterano = new Veterano(user);
+		usuarios.add(index, novoVeterano);
+	}
+
+	public void downgrade(String login) throws Exception {
+		Usuario user = this.buscaUsuario(login);
+		if (user == null)
+			throw new Exception("Login invalido.");
+		if (user instanceof Noob)
+			throw new Exception("Downgrade indisponivel.");
+		if (user.getX2p() >= LIMITE_X2P)
+			throw new Exception("Downgrade indisponivel.");
+		int index = usuarios.indexOf(user);
+		Usuario novoNoob = new Noob(user);
+		usuarios.add(index, novoNoob);
+	}
+
+	private Usuario buscaUsuario(String login) {
+		Usuario user = null;
+		for (Usuario usuario : usuarios) {
+			if (usuario.getLogin().equals(login))
+				user = usuario;
+		}
+		return user;
+	}
+
 	public void imprimeInformacoes() {
 		System.out.print("=== Central P2­CG ===");
 		System.out.println();
@@ -86,10 +122,12 @@ public class Loja {
 			System.out.println(usuario.getLogin());
 			System.out.println(usuario.getNome());
 			if (usuario instanceof Noob) {
-				System.out.println("Jogador Noob: " + usuario.getX2p() + " x2p");
+				System.out
+						.println("Jogador Noob: " + usuario.getX2p() + " x2p");
 			}
 			if (usuario instanceof Veterano) {
-				System.out.println("Jogador Veterano: " + usuario.getX2p() + "x2p");
+				System.out.println("Jogador Veterano: " + usuario.getX2p()
+						+ "x2p");
 			}
 			System.out.println("Lista de Jogos:");
 			usuario.listaJogosComprados();
