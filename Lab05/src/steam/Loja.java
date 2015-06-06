@@ -8,7 +8,6 @@ public class Loja {
 	private ArrayList<Jogo> jogos;
 	private double totalArrecado;
 	private JogoFactory jogoFactory;
-	private final int LIMITE_X2P = 1000;
 
 	public Loja() {
 		this.usuarios = new ArrayList<Usuario>();
@@ -17,7 +16,7 @@ public class Loja {
 		this.jogoFactory = new JogoFactory();
 	}
 
-	public Usuario criaUsuario(String nome, String login, double dinheiro,
+	public void criaUsuario(String nome, String login, double dinheiro,
 			String tipoUsuario) {
 		Usuario novoUsuario = null;
 		try {
@@ -26,15 +25,12 @@ public class Loja {
 			if (tipoUsuario.equalsIgnoreCase("veterano"))
 				novoUsuario = new Veterano(nome, login, dinheiro);
 			this.usuarios.add(novoUsuario);
-			return novoUsuario;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return novoUsuario;
 	}
 
-	public Jogo criaJogo(String nome, double preco, String tipoDeJogo,
+	public void criaJogo(String nome, double preco, String tipoDeJogo,
 			EstilosDeJogo... estilosDeJogo) {
 		Jogo novoJogo = null;
 		if (tipoDeJogo.equalsIgnoreCase("RPG"))
@@ -45,12 +41,13 @@ public class Loja {
 			novoJogo = jogoFactory.criaJogoPlataforma(nome, preco,
 					estilosDeJogo);
 		jogos.add(novoJogo);
-		return novoJogo;
 	}
 
-	public boolean vendeJogo(Usuario user, Jogo jogo) {
-		if (user.getDinheiro() >= jogo.getPreco()) {
-			try {
+	public boolean vendeJogo(String login, String nomeJogo) {
+		try {
+			Usuario user = this.buscaUsuario(login);
+			Jogo jogo = this.buscaJogo(nomeJogo);
+			if (user.getDinheiro() >= jogo.getPreco()) {
 				totalArrecado += jogo.getPreco() * user.getDesconto();
 				Jogo novoJogo = null;
 				if (jogo instanceof RPG)
@@ -61,60 +58,100 @@ public class Loja {
 					novoJogo = new Plataforma(jogo);
 				user.compraJogo(novoJogo);
 				return true;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return false;
-	}
 
-	public boolean adicionaDinheiro(Usuario usuario, double dinheiro) {
-		try {
-			usuario.adicionaDinheiro(dinheiro);
-			return true;
+			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
 	}
 
-	public void upgrade(String login) throws Exception {
-		Usuario user = this.buscaUsuario(login);
-		if (user == null)
-			throw new Exception("Login invalido.");
-		if (user instanceof Veterano)
-			throw new Exception("Upgrade indisponivel.");
-		if (user.getX2p() < LIMITE_X2P)
-			throw new Exception("Upgrade indisponivel.");
-		int index = usuarios.indexOf(user);
-		usuarios.remove(index);
-		Usuario novoVeterano = new Veterano(user);
-		usuarios.add(index, novoVeterano);
+	public void adicionaDinheiro(Usuario usuario, double dinheiro) {
+		try {
+			usuario.adicionaDinheiro(dinheiro);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void downgrade(String login) throws Exception {
-		Usuario user = this.buscaUsuario(login);
-		if (user == null)
-			throw new Exception("Login invalido.");
-		if (user instanceof Noob)
-			throw new Exception("Downgrade indisponivel.");
-		if (user.getX2p() >= LIMITE_X2P)
-			throw new Exception("Downgrade indisponivel.");
-		int index = usuarios.indexOf(user);
-		usuarios.remove(index);
-		Usuario novoNoob = new Noob(user);
-		usuarios.add(index, novoNoob);
+	public void recompensar(String login, String nomeJogo, int score,
+			boolean zerouJogo) {
+		try {
+			Usuario user = this.buscaUsuario(login);
+			user.recompensar(nomeJogo, score, zerouJogo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	private Usuario buscaUsuario(String login) {
+	public void punir(String login, String nomeJogo, int score,
+			boolean zerouJogo) {
+		try {
+			Usuario user = this.buscaUsuario(login);
+			user.punir(nomeJogo, score, zerouJogo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void upgrade(String login) {
+		Usuario user;
+		try {
+			user = this.buscaUsuario(login);
+			/*
+			 * if (user instanceof Veterano) throw new
+			 * Exception("Upgrade indisponivel."); if (user.getX2p() <
+			 * LIMITE_X2P) throw new Exception("Upgrade indisponivel.");
+			 */
+			user.upgrade();
+			int index = usuarios.indexOf(user);
+			usuarios.remove(index);
+			Usuario novoVeterano = new Veterano(user);
+			usuarios.add(index, novoVeterano);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void downgrade(String login) {
+		Usuario user;
+		try {
+			user = this.buscaUsuario(login);
+			/*
+			 * if (user instanceof Noob) throw new
+			 * Exception("Downgrade indisponivel."); if (user.getX2p() >=
+			 * LIMITE_X2P) throw new Exception("Downgrade indisponivel.");
+			 */
+			user.downgrade();
+			int index = usuarios.indexOf(user);
+			usuarios.remove(index);
+			Usuario novoNoob = new Noob(user);
+			usuarios.add(index, novoNoob);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private Usuario buscaUsuario(String login) throws Exception {
 		Usuario user = null;
 		for (Usuario usuario : usuarios) {
 			if (usuario.getLogin().equals(login))
 				user = usuario;
 		}
+		if (user == null)
+			throw new Exception("Login invalido.");
 		return user;
+	}
+
+	private Jogo buscaJogo(String nomeJogo) throws Exception {
+		Jogo jogo = null;
+		for (Jogo outroJogo : jogos) {
+			if (outroJogo.getNome().equalsIgnoreCase(nomeJogo))
+				jogo = outroJogo;
+		}
+		if (jogo == null)
+			throw new Exception("Jogo invalido");
+		return jogo;
 	}
 
 	public void imprimeInformacoes() {

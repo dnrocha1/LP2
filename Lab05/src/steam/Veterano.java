@@ -52,4 +52,15 @@ public class Veterano extends Usuario {
 			this.setX2p(x2pAtual - 20);
 	}
 
+	@Override
+	public void upgrade() throws Exception {
+		throw new Exception("Upgrade indisponivel.");
+	}
+	
+	@Override
+	public void downgrade() throws Exception {
+		if(this.getX2p() >= LIMITE_X2P)
+			throw new Exception("Downgrade indisponivel.");
+	}
+
 }

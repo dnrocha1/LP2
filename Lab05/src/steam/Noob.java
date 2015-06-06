@@ -52,4 +52,16 @@ public class Noob extends Usuario {
 			this.setX2p(x2pAtual - 50);
 	}
 
+	@Override
+	public void upgrade() throws Exception {
+		if(this.getX2p() < LIMITE_X2P)
+			throw new Exception("Upgrade indisponivel.");
+		
+	}
+	
+	@Override
+	public void downgrade() throws Exception {
+		throw new Exception("Downgrade indisponivel.");
+	}
+
 }
