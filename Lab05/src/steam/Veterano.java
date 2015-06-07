@@ -1,5 +1,10 @@
 package steam;
 
+import exceptions.DowngradeException;
+import exceptions.JogoInvalidoException;
+import exceptions.ScoreNegativoException;
+import exceptions.UpgradeException;
+
 public class Veterano extends Usuario {
 
 	private double desconto = 0.8;
@@ -24,9 +29,9 @@ public class Veterano extends Usuario {
 		Jogo jogo = this.buscaJogo(nomeJogo);
 		int x2pAtual = this.getX2p();
 		if (jogo == null)
-			throw new Exception("Jogo nao foi comprado ou nao existe.");
+			throw new JogoInvalidoException();
 		if (score < 0)
-			throw new Exception("Score nao pode ser negativo.");
+			throw new ScoreNegativoException();
 		int x2pJogo = jogo.joga(score, zerou);
 		x2pAtual += x2pJogo;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.ONLINE))
@@ -42,9 +47,9 @@ public class Veterano extends Usuario {
 		Jogo jogo = this.buscaJogo(nomeJogo);
 		int x2pAtual = this.getX2p();
 		if (jogo == null)
-			throw new Exception("Jogo nao foi comprado ou nao existe.");
+			throw new JogoInvalidoException();
 		if (score < 0)
-			throw new Exception("Score nao pode ser negativo.");
+			throw new ScoreNegativoException();
 		int x2pJogo = jogo.joga(score, zerou);
 		x2pAtual += x2pJogo;
 		if (jogo.getEstilosDeJogo().contains(EstilosDeJogo.COMPETITIVO))
@@ -56,13 +61,13 @@ public class Veterano extends Usuario {
 
 	@Override
 	public void upgrade() throws Exception {
-		throw new Exception("Upgrade indisponivel.");
+		throw new UpgradeException();
 	}
 	
 	@Override
 	public void downgrade() throws Exception {
 		if(this.getX2p() >= LIMITE_X2P)
-			throw new Exception("Downgrade indisponivel.");
+			throw new DowngradeException();
 	}
 
 }

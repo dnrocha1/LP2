@@ -3,6 +3,9 @@ package steam;
 import java.util.Collections;
 import java.util.HashSet;
 
+import exceptions.NullNomeException;
+import exceptions.PrecoNegativoException;
+
 public abstract class Jogo {
 
 	private String nome;
@@ -14,11 +17,11 @@ public abstract class Jogo {
 	private final int MAX_SCORE = 100000;
 
 	public Jogo(String nome, double preco, EstilosDeJogo... estilosDeJogo)
-			throws Exception {
+			throws NullNomeException, PrecoNegativoException {
 		if (nome == null)
-			throw new Exception("Nome nao pode ser null.");
+			throw new NullNomeException();
 		if (preco < 0)
-			throw new Exception("Preco nao pode ser negativo.");
+			throw new PrecoNegativoException();
 		this.nome = nome;
 		this.preco = preco;
 		this.maiorScore = 0;

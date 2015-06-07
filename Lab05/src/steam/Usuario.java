@@ -2,6 +2,11 @@ package steam;
 
 import java.util.ArrayList;
 
+import exceptions.DinheiroNegativoException;
+import exceptions.JogoInvalidoException;
+import exceptions.NullLoginException;
+import exceptions.NullNomeException;
+
 public abstract class Usuario {
 
 	private String nome;
@@ -14,11 +19,11 @@ public abstract class Usuario {
 
 	public Usuario(String nome, String login, double dinheiro) throws Exception {
 		if (nome == null)
-			throw new Exception("Nome nao pode ser null.");
+			throw new NullNomeException();
 		if (login == null)
-			throw new Exception("Login nao pode ser null.");
+			throw new NullLoginException();
 		if (dinheiro < 0)
-			throw new Exception("Dinheiro nao pode ser negativo.");
+			throw new DinheiroNegativoException();
 		this.nome = nome;
 		this.login = login;
 		this.dinheiro = dinheiro;
@@ -35,21 +40,19 @@ public abstract class Usuario {
 		this.x2p = user.getX2p();
 	}
 
-	public boolean compraJogo(Jogo jogo) throws Exception {
+	public void compraJogo(Jogo jogo) throws Exception {
 		if (jogo == null)
-			throw new Exception("Jogo nao foi referenciado.");
+			throw new JogoInvalidoException();
 		this.x2p = (int) (10 * jogo.getPreco());
 		if (this.dinheiro >= jogo.getPreco()) {
 			this.dinheiro -= jogo.getPreco() * desconto;
 			this.adicionaJogo(jogo);
-			return true;
 		}
-		return false;
 	}
 
 	public void adicionaDinheiro(double dinheiro) throws Exception {
-		if (dinheiro <= 0)
-			throw new Exception("Valor de dinheiro invalido.");
+		if (dinheiro < 0)
+			throw new DinheiroNegativoException();
 		this.dinheiro += dinheiro;
 	}
 
@@ -87,16 +90,6 @@ public abstract class Usuario {
 
 	public abstract double getDesconto();
 
-	/*
-	 * public void jogaUsuario(String nomeJogo, int score, boolean zerouJogo)
-	 * throws Exception{ Jogo jogo = buscaJogo(nomeJogo); if (jogo == null)
-	 * throw new Exception("Jogo nao foi comprado ou nao existe."); if (score <
-	 * 0) throw new Exception("Score nao pode ser negativo."); jogo.joga(score,
-	 * zerouJogo); if (jogo instanceof RPG) this.x2p += 10; if (jogo instanceof
-	 * Luta) this.x2p += score >= MAX_SCORE ? 100 : (score/1000); if (jogo
-	 * instanceof Plataforma) if(zerouJogo) this.x2p += 20; }
-	 */
-
 	public abstract void recompensar(String nomeJogo, int score, boolean zerou)
 			throws Exception;
 
@@ -114,7 +107,7 @@ public abstract class Usuario {
 
 	private boolean adicionaJogo(Jogo novoJogo) throws Exception {
 		if (novoJogo == null) {
-			throw new Exception("Jogo nao foi referenciado.");
+			throw new JogoInvalidoException();
 		}
 		this.jogosComprados.add(novoJogo);
 		return true;

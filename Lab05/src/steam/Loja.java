@@ -2,6 +2,8 @@ package steam;
 
 import java.util.ArrayList;
 
+import exceptions.DinheiroInsuficienteException;
+
 public class Loja {
 
 	private ArrayList<Usuario> usuarios;
@@ -61,7 +63,7 @@ public class Loja {
 				user.compraJogo(novoJogo);
 				return true;
 			} else {
-				throw new Exception("O usuario nao tem dinheiro suficiente.");
+				throw new DinheiroInsuficienteException();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,11 +103,6 @@ public class Loja {
 		Usuario user;
 		try {
 			user = this.buscaUsuario(login);
-			/*
-			 * if (user instanceof Veterano) throw new
-			 * Exception("Upgrade indisponivel."); if (user.getX2p() <
-			 * LIMITE_X2P) throw new Exception("Upgrade indisponivel.");
-			 */
 			user.upgrade();
 			int index = usuarios.indexOf(user);
 			usuarios.remove(index);
@@ -120,11 +117,6 @@ public class Loja {
 		Usuario user;
 		try {
 			user = this.buscaUsuario(login);
-			/*
-			 * if (user instanceof Noob) throw new
-			 * Exception("Downgrade indisponivel."); if (user.getX2p() >=
-			 * LIMITE_X2P) throw new Exception("Downgrade indisponivel.");
-			 */
 			user.downgrade();
 			int index = usuarios.indexOf(user);
 			usuarios.remove(index);
