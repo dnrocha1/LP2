@@ -40,61 +40,19 @@ public abstract class Usuario {
 		this.x2p = user.getX2p();
 	}
 
-	public void compraJogo(Jogo jogo) throws Exception {
-		if (jogo == null)
-			throw new JogoInvalidoException();
-		this.x2p = (int) (10 * jogo.getPreco());
-		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco() * desconto;
-			this.adicionaJogo(jogo);
-		}
-	}
-
 	public void adicionaDinheiro(double dinheiro) throws Exception {
 		if (dinheiro < 0)
 			throw new DinheiroNegativoException();
 		this.dinheiro += dinheiro;
 	}
 
-	public double totalJogosComprados() {
-		double total = 0;
-		for (Jogo jogo : jogosComprados) {
-			total += jogo.getPreco();
+	private boolean adicionaJogo(Jogo novoJogo) throws Exception {
+		if (novoJogo == null) {
+			throw new JogoInvalidoException();
 		}
-		return total;
+		this.jogosComprados.add(novoJogo);
+		return true;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public double getDinheiro() {
-		return dinheiro;
-	}
-
-	public int getX2p() {
-		return x2p;
-	}
-
-	public ArrayList<Jogo> getJogosComprados() {
-		return jogosComprados;
-	}
-
-	public void setX2p(int novoX2p) {
-		this.x2p = novoX2p;
-	}
-
-	public abstract double getDesconto();
-
-	public abstract void recompensar(String nomeJogo, int score, boolean zerou)
-			throws Exception;
-
-	public abstract void punir(String nomeJogo, int score, boolean zerou)
-			throws Exception;
 
 	public Jogo buscaJogo(String nomeJogo) {
 		Jogo jogo = null;
@@ -105,18 +63,40 @@ public abstract class Usuario {
 		return jogo;
 	}
 
-	private boolean adicionaJogo(Jogo novoJogo) throws Exception {
-		if (novoJogo == null) {
+	public void compraJogo(Jogo jogo) throws Exception {
+		if (jogo == null)
 			throw new JogoInvalidoException();
+		this.x2p = (int) (10 * jogo.getPreco());
+		if (this.dinheiro >= jogo.getPreco()) {
+			this.dinheiro -= jogo.getPreco() * desconto;
+			this.adicionaJogo(jogo);
 		}
-		this.jogosComprados.add(novoJogo);
-		return true;
 	}
-	
-	public abstract void upgrade() throws Exception;
 
 	public abstract void downgrade() throws Exception;
-	
+
+	public abstract double getDesconto();
+
+	public double getDinheiro() {
+		return dinheiro;
+	}
+
+	public ArrayList<Jogo> getJogosComprados() {
+		return jogosComprados;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public int getX2p() {
+		return x2p;
+	}
+
 	public void listaJogosComprados() {
 		String texto = "";
 		for (Jogo jogo : jogosComprados) {
@@ -130,5 +110,25 @@ public abstract class Usuario {
 			jogo.listaInformacoes();
 		}
 	}
+
+	public abstract void punir(String nomeJogo, int score, boolean zerou)
+			throws Exception;
+
+	public abstract void recompensar(String nomeJogo, int score, boolean zerou)
+			throws Exception;
+	
+	public void setX2p(int novoX2p) {
+		this.x2p = novoX2p;
+	}
+
+	public double totalJogosComprados() {
+		double total = 0;
+		for (Jogo jogo : jogosComprados) {
+			total += jogo.getPreco();
+		}
+		return total;
+	}
+	
+	public abstract void upgrade() throws Exception;
 
 }

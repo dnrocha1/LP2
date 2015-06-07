@@ -21,7 +21,7 @@ public class Main {
 																		// recompensando
 		loja.upgrade("francisco.neto");
 		//loja.downgrade("francisco.neto");*/
-		loja.criaUsuario("Francisco Neto", "francisco.neto", 400, "Noob");
+		loja.criaUsuario("Francisco Neto", "francisco.neto", 400, null);
 		loja.criaJogo("Magicka", 25, "Plataforma", EstilosDeJogo.OFFLINE, EstilosDeJogo.MULTIPLAYER);
 		loja.vendeJogo("francisco.neto", "Magicka");
 		loja.recompensar("francisco.neto", "Magicka", 20000, true);

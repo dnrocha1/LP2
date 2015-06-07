@@ -3,6 +3,7 @@ package steam;
 import java.util.ArrayList;
 
 import exceptions.DinheiroInsuficienteException;
+import exceptions.NullTipoUsuarioException;
 
 public class Loja {
 
@@ -23,7 +24,7 @@ public class Loja {
 		Usuario novoUsuario = null;
 		try {
 			if (tipoUsuario == null)
-				throw new Exception("Tipo de usuario nao pode ser null.");
+				throw new NullTipoUsuarioException();
 			if (tipoUsuario.equalsIgnoreCase("noob"))
 				novoUsuario = new Noob(nome, login, dinheiro);
 			if (tipoUsuario.equalsIgnoreCase("veterano"))
