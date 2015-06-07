@@ -31,7 +31,7 @@ public abstract class Usuario {
 		this.jogosComprados = new ArrayList<Jogo>();
 	}
 
-	protected Usuario(Usuario user) {
+	public Usuario(Usuario user) {
 		this.nome = user.getNome();
 		this.login = user.getLogin();
 		this.dinheiro = user.getDinheiro();
@@ -96,7 +96,7 @@ public abstract class Usuario {
 	public abstract void punir(String nomeJogo, int score, boolean zerou)
 			throws Exception;
 
-	protected Jogo buscaJogo(String nomeJogo) {
+	public Jogo buscaJogo(String nomeJogo) {
 		Jogo jogo = null;
 		for (Jogo outroJogo : jogosComprados) {
 			if (outroJogo.getNome().equalsIgnoreCase(nomeJogo))

@@ -31,7 +31,7 @@ public abstract class Jogo {
 		Collections.addAll(this.estilosDeJogo, estilosDeJogo);
 	}
 
-	protected Jogo(Jogo jogo) {
+	public Jogo(Jogo jogo) {
 		this.nome = jogo.getNome();
 		this.preco = jogo.getPreco();
 		this.maiorScore = jogo.getMaiorScore();

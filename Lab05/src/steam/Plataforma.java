@@ -7,7 +7,7 @@ public class Plataforma extends Jogo {
 		super(nome, preco, estilosDeJogo);
 	}
 
-	protected Plataforma(Jogo jogo) {
+	public Plataforma(Jogo jogo) {
 		super(jogo);
 	}
 

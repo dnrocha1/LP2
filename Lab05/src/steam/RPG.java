@@ -7,7 +7,7 @@ public class RPG extends Jogo {
 		super(nome, preco, estilosDeJogo);
 	}
 
-	protected RPG(Jogo jogo) {
+	public RPG(Jogo jogo) {
 		super(jogo);
 	}
 

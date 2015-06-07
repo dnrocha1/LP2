@@ -7,7 +7,7 @@ public class Luta extends Jogo {
 		super(nome, preco, estilosDeJogo);
 	}
 
-	protected Luta(Jogo jogo) {
+	public Luta(Jogo jogo) {
 		super(jogo);
 	}
 
