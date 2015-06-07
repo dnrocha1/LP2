@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import exceptions.DinheiroInsuficienteException;
 import exceptions.NullTipoUsuarioException;
+import exceptions.TipoUsuarioInvalidoException;
 
 public class Loja {
 
@@ -25,10 +26,13 @@ public class Loja {
 		try {
 			if (tipoUsuario == null)
 				throw new NullTipoUsuarioException();
-			if (tipoUsuario.equalsIgnoreCase("noob"))
+			if (tipoUsuario.equalsIgnoreCase("Noob")) {
 				novoUsuario = new Noob(nome, login, dinheiro);
-			if (tipoUsuario.equalsIgnoreCase("veterano"))
+			} else if (tipoUsuario.equalsIgnoreCase("Veterano"))
 				novoUsuario = new Veterano(nome, login, dinheiro);
+			else{
+				throw new TipoUsuarioInvalidoException();
+			}
 			this.usuarios.add(novoUsuario);
 		} catch (Exception e) {
 			e.printStackTrace();
