@@ -40,18 +40,18 @@ public abstract class Usuario {
 		this.x2p = user.getX2p();
 	}
 
-	public void adicionaDinheiro(double dinheiro) throws Exception {
-		if (dinheiro < 0)
-			throw new DinheiroNegativoException();
-		this.dinheiro += dinheiro;
-	}
-
 	private boolean adicionaJogo(Jogo novoJogo) throws Exception {
 		if (novoJogo == null) {
 			throw new JogoInvalidoException();
 		}
 		this.jogosComprados.add(novoJogo);
 		return true;
+	}
+
+	public void adicionaDinheiro(double dinheiro) throws Exception {
+		if (dinheiro < 0)
+			throw new DinheiroNegativoException();
+		this.dinheiro += dinheiro;
 	}
 
 	public Jogo buscaJogo(String nomeJogo) {
@@ -72,10 +72,6 @@ public abstract class Usuario {
 			this.adicionaJogo(jogo);
 		}
 	}
-
-	public abstract void downgrade() throws Exception;
-
-	public abstract double getDesconto();
 
 	public double getDinheiro() {
 		return dinheiro;
@@ -111,12 +107,6 @@ public abstract class Usuario {
 		}
 	}
 
-	public abstract void punir(String nomeJogo, int score, boolean zerou)
-			throws Exception;
-
-	public abstract void recompensar(String nomeJogo, int score, boolean zerou)
-			throws Exception;
-	
 	public void setX2p(int novoX2p) {
 		this.x2p = novoX2p;
 	}
@@ -128,7 +118,17 @@ public abstract class Usuario {
 		}
 		return total;
 	}
-	
+
+	public abstract void downgrade() throws Exception;
+
+	public abstract double getDesconto();
+
+	public abstract void punir(String nomeJogo, int score, boolean zerou)
+			throws Exception;
+
+	public abstract void recompensar(String nomeJogo, int score, boolean zerou)
+			throws Exception;
+
 	public abstract void upgrade() throws Exception;
 
 }
