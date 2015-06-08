@@ -110,9 +110,10 @@ public class Loja {
 			user = this.buscaUsuario(login);
 			user.upgrade();
 			int index = usuarios.indexOf(user);
-			usuarios.remove(index);
+			//usuarios.remove(index);
 			Usuario novoVeterano = new Veterano(user);
-			usuarios.add(index, novoVeterano);
+			//usuarios.add(index, novoVeterano);
+			usuarios.set(index, novoVeterano);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -124,9 +125,10 @@ public class Loja {
 			user = this.buscaUsuario(login);
 			user.downgrade();
 			int index = usuarios.indexOf(user);
-			usuarios.remove(index);
+			//usuarios.remove(index);
 			Usuario novoNoob = new Noob(user);
-			usuarios.add(index, novoNoob);
+			//usuarios.add(index, novoNoob);
+			usuarios.set(index, novoNoob);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
