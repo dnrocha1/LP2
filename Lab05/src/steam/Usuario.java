@@ -12,7 +12,7 @@ public abstract class Usuario {
 	private String nome;
 	private String login;
 	private double dinheiro;
-	private double desconto = 0;
+	//private double desconto = 0;
 	private ArrayList<Jogo> jogosComprados;
 	private int x2p;
 	public final int LIMITE_X2P = 1000;
@@ -35,7 +35,7 @@ public abstract class Usuario {
 		this.nome = user.getNome();
 		this.login = user.getLogin();
 		this.dinheiro = user.getDinheiro();
-		this.desconto = user.getDesconto();
+		//this.desconto = user.getDesconto();
 		this.jogosComprados = user.jogosComprados;
 		this.x2p = user.getX2p();
 	}
@@ -68,7 +68,7 @@ public abstract class Usuario {
 			throw new JogoInvalidoException();
 		this.x2p = (int) (10 * jogo.getPreco());
 		if (this.dinheiro >= jogo.getPreco()) {
-			this.dinheiro -= jogo.getPreco() * desconto;
+			this.dinheiro -= jogo.getPreco() * this.getDesconto();
 			this.adicionaJogo(jogo);
 		}
 	}
