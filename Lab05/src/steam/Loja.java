@@ -3,7 +3,9 @@ package steam;
 import java.util.ArrayList;
 
 import exceptions.DinheiroInsuficienteException;
+import exceptions.LoginInvalidoException;
 import exceptions.NullTipoUsuarioException;
+import exceptions.TipoJogoInvalidoException;
 import exceptions.TipoUsuarioInvalidoException;
 
 public class Loja {
@@ -34,10 +36,12 @@ public class Loja {
 				throw new TipoUsuarioInvalidoException();
 			}
 		} catch (Exception e) {
-			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
-			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
 			System.exit(0);
-			
+
 		}
 		this.usuarios.add(novoUsuario);
 	}
@@ -45,13 +49,24 @@ public class Loja {
 	public void criaJogo(String nome, double preco, String tipoDeJogo,
 			EstilosDeJogo... estilosDeJogo) {
 		Jogo novoJogo = null;
-		if (tipoDeJogo.equalsIgnoreCase("RPG"))
+		if (tipoDeJogo.equalsIgnoreCase("RPG")) {
 			novoJogo = jogoFactory.criaJogoRPG(nome, preco, estilosDeJogo);
-		if (tipoDeJogo.equalsIgnoreCase("Luta"))
+		} else if (tipoDeJogo.equalsIgnoreCase("Luta"))
 			novoJogo = jogoFactory.criaJogoLuta(nome, preco, estilosDeJogo);
-		if (tipoDeJogo.equalsIgnoreCase("Plataforma"))
+		else if (tipoDeJogo.equalsIgnoreCase("Plataforma")) {
 			novoJogo = jogoFactory.criaJogoPlataforma(nome, preco,
 					estilosDeJogo);
+		} else {
+			try {
+				throw new TipoJogoInvalidoException();
+			} catch (TipoJogoInvalidoException e) {
+				int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+						.getLineNumber();
+				System.out.println("Erro na linha " + linhaErro + ": "
+						+ e.getMessage());
+				System.exit(0);
+			}
+		}
 		jogos.add(novoJogo);
 	}
 
@@ -68,9 +83,10 @@ public class Loja {
 				throw new DinheiroInsuficienteException();
 			}
 		} catch (Exception e) {
-			//e.printStackTrace();
-			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
-			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
 			System.exit(0);
 		}
 		return false;
@@ -91,9 +107,10 @@ public class Loja {
 		try {
 			usuario.adicionaDinheiro(dinheiro);
 		} catch (Exception e) {
-			//e.printStackTrace();
-			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
-			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
 			System.exit(0);
 		}
 	}
@@ -104,9 +121,11 @@ public class Loja {
 			Usuario user = this.buscaUsuario(login);
 			user.recompensar(nomeJogo, score, zerouJogo);
 		} catch (Exception e) {
-			//e.printStackTrace();
-			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
-			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			// e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
 			System.exit(0);
 		}
 	}
@@ -117,9 +136,10 @@ public class Loja {
 			Usuario user = this.buscaUsuario(login);
 			user.punir(nomeJogo, score, zerouJogo);
 		} catch (Exception e) {
-			//e.printStackTrace();
-			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
-			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
 			System.exit(0);
 		}
 	}
@@ -130,14 +150,13 @@ public class Loja {
 			user = this.buscaUsuario(login);
 			user.upgrade();
 			int index = usuarios.indexOf(user);
-			// usuarios.remove(index);
 			Usuario novoVeterano = new Veterano(user);
-			// usuarios.add(index, novoVeterano);
 			usuarios.set(index, novoVeterano);
 		} catch (Exception e) {
-			//e.printStackTrace();
-			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
-			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
 			System.exit(0);
 		}
 	}
@@ -148,14 +167,13 @@ public class Loja {
 			user = this.buscaUsuario(login);
 			user.downgrade();
 			int index = usuarios.indexOf(user);
-			// usuarios.remove(index);
 			Usuario novoNoob = new Noob(user);
-			// usuarios.add(index, novoNoob);
 			usuarios.set(index, novoNoob);
 		} catch (Exception e) {
-			//e.printStackTrace();
-			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
-			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
 			System.exit(0);
 		}
 	}
@@ -167,7 +185,7 @@ public class Loja {
 				user = usuario;
 		}
 		if (user == null)
-			throw new Exception("Login invalido.");
+			throw new LoginInvalidoException();
 		return user;
 	}
 
@@ -183,7 +201,7 @@ public class Loja {
 	}
 
 	public void imprimeInformacoes() {
-		System.out.print("=== Central P2ï¿½CG ===");
+		System.out.print("=== Central P2-CG ===");
 		System.out.println();
 		for (Usuario usuario : usuarios) {
 			System.out.println(usuario.getLogin());
@@ -200,7 +218,7 @@ public class Loja {
 			usuario.listaJogosComprados();
 			System.out.println("Total de preco dos jogos: R$ "
 					+ usuario.totalJogosComprados());
-			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­");
 			System.out.println("Total arrecadado com vendas de jogos: R$ "
 					+ this.totalArrecado);
 		}

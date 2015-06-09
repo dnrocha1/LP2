@@ -8,8 +8,11 @@ public class JogoFactory {
 		try {
 			novoJogo = new RPG(nome, preco, estilosDeJogo);
 		} catch (Exception e) {
-			e.printStackTrace();
-			http://stackoverflow.com/questions/115008/how-can-we-print-line-numbers-to-the-log-in-java
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
+			System.exit(0);
 		}
 		return novoJogo;
 	}
@@ -25,7 +28,11 @@ public class JogoFactory {
 		try {
 			novoJogo = new Luta(nome, preco, estilosDeJogo);
 		} catch (Exception e) {
-			e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
+			System.exit(0);
 		}
 		return novoJogo;
 	}
@@ -41,7 +48,11 @@ public class JogoFactory {
 		try {
 			novoJogo = new Plataforma(nome, preco, estilosDeJogo);
 		} catch (Exception e) {
-			e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
+					.getLineNumber();
+			System.out.println("Erro na linha " + linhaErro + ": "
+					+ e.getMessage());
+			System.exit(0);
 		}
 		return novoJogo;
 	}
