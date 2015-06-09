@@ -60,11 +60,11 @@ public class Loja {
 				totalArrecado += jogo.getPreco() * user.getDesconto();
 				Jogo novoJogo = null;
 				if (jogo instanceof RPG)
-					novoJogo = new RPG(jogo);
+					novoJogo = jogoFactory.criaJogoRPG(jogo);
 				if (jogo instanceof Luta)
-					novoJogo = new Luta(jogo);
+					novoJogo = jogoFactory.criaJogoLuta(jogo);
 				if (jogo instanceof Plataforma)
-					novoJogo = new Plataforma(jogo);
+					novoJogo = jogoFactory.criaJogoPlataforma(jogo);
 				user.compraJogo(novoJogo);
 				return true;
 			} else {
@@ -157,7 +157,7 @@ public class Loja {
 	}
 
 	public void imprimeInformacoes() {
-		System.out.print("=== Central P2­CG ===");
+		System.out.print("=== Central P2ï¿½CG ===");
 		System.out.println();
 		for (Usuario usuario : usuarios) {
 			System.out.println(usuario.getLogin());
@@ -174,7 +174,7 @@ public class Loja {
 			usuario.listaJogosComprados();
 			System.out.println("Total de preco dos jogos: R$ "
 					+ usuario.totalJogosComprados());
-			System.out.println("­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			System.out.println("Total arrecadado com vendas de jogos: R$ "
 					+ this.totalArrecado);
 		}
