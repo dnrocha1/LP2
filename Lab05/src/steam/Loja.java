@@ -30,7 +30,7 @@ public class Loja {
 				novoUsuario = new Noob(nome, login, dinheiro);
 			} else if (tipoUsuario.equalsIgnoreCase("Veterano"))
 				novoUsuario = new Veterano(nome, login, dinheiro);
-			else{
+			else {
 				throw new TipoUsuarioInvalidoException();
 			}
 			this.usuarios.add(novoUsuario);
@@ -58,13 +58,7 @@ public class Loja {
 			Jogo jogo = this.buscaJogo(nomeJogo);
 			if (user.getDinheiro() >= jogo.getPreco()) {
 				totalArrecado += jogo.getPreco() * user.getDesconto();
-				Jogo novoJogo = null;
-				if (jogo instanceof RPG)
-					novoJogo = jogoFactory.criaJogoRPG(jogo);
-				if (jogo instanceof Luta)
-					novoJogo = jogoFactory.criaJogoLuta(jogo);
-				if (jogo instanceof Plataforma)
-					novoJogo = jogoFactory.criaJogoPlataforma(jogo);
+				Jogo novoJogo = copiaJogo(jogo);
 				user.compraJogo(novoJogo);
 				return true;
 			} else {
@@ -74,6 +68,17 @@ public class Loja {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	private Jogo copiaJogo(Jogo jogo) {
+		Jogo novoJogo = null;
+		if (jogo instanceof RPG)
+			novoJogo = jogoFactory.criaJogoRPG(jogo);
+		if (jogo instanceof Luta)
+			novoJogo = jogoFactory.criaJogoLuta(jogo);
+		if (jogo instanceof Plataforma)
+			novoJogo = jogoFactory.criaJogoPlataforma(jogo);
+		return novoJogo;
 	}
 
 	public void adicionaDinheiro(Usuario usuario, double dinheiro) {
@@ -110,9 +115,9 @@ public class Loja {
 			user = this.buscaUsuario(login);
 			user.upgrade();
 			int index = usuarios.indexOf(user);
-			//usuarios.remove(index);
+			// usuarios.remove(index);
 			Usuario novoVeterano = new Veterano(user);
-			//usuarios.add(index, novoVeterano);
+			// usuarios.add(index, novoVeterano);
 			usuarios.set(index, novoVeterano);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,9 +130,9 @@ public class Loja {
 			user = this.buscaUsuario(login);
 			user.downgrade();
 			int index = usuarios.indexOf(user);
-			//usuarios.remove(index);
+			// usuarios.remove(index);
 			Usuario novoNoob = new Noob(user);
-			//usuarios.add(index, novoNoob);
+			// usuarios.add(index, novoNoob);
 			usuarios.set(index, novoNoob);
 		} catch (Exception e) {
 			e.printStackTrace();
