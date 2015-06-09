@@ -33,10 +33,13 @@ public class Loja {
 			else {
 				throw new TipoUsuarioInvalidoException();
 			}
-			this.usuarios.add(novoUsuario);
 		} catch (Exception e) {
-			e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
+			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			System.exit(0);
+			
 		}
+		this.usuarios.add(novoUsuario);
 	}
 
 	public void criaJogo(String nome, double preco, String tipoDeJogo,
@@ -65,7 +68,10 @@ public class Loja {
 				throw new DinheiroInsuficienteException();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
+			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			System.exit(0);
 		}
 		return false;
 	}
@@ -85,7 +91,10 @@ public class Loja {
 		try {
 			usuario.adicionaDinheiro(dinheiro);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
+			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			System.exit(0);
 		}
 	}
 
@@ -95,7 +104,10 @@ public class Loja {
 			Usuario user = this.buscaUsuario(login);
 			user.recompensar(nomeJogo, score, zerouJogo);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
+			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			System.exit(0);
 		}
 	}
 
@@ -105,7 +117,10 @@ public class Loja {
 			Usuario user = this.buscaUsuario(login);
 			user.punir(nomeJogo, score, zerouJogo);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
+			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			System.exit(0);
 		}
 	}
 
@@ -120,7 +135,10 @@ public class Loja {
 			// usuarios.add(index, novoVeterano);
 			usuarios.set(index, novoVeterano);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
+			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			System.exit(0);
 		}
 	}
 
@@ -135,7 +153,10 @@ public class Loja {
 			// usuarios.add(index, novoNoob);
 			usuarios.set(index, novoNoob);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			int linhaErro = e.getStackTrace()[e.getStackTrace().length-1].getLineNumber();
+			System.out.println("Erro na linha "+linhaErro+": "+e.getMessage());
+			System.exit(0);
 		}
 	}
 

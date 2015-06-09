@@ -9,6 +9,7 @@ public class JogoFactory {
 			novoJogo = new RPG(nome, preco, estilosDeJogo);
 		} catch (Exception e) {
 			e.printStackTrace();
+			http://stackoverflow.com/questions/115008/how-can-we-print-line-numbers-to-the-log-in-java
 		}
 		return novoJogo;
 	}
