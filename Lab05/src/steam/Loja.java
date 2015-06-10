@@ -1,3 +1,8 @@
+/**
+ * Classe Loja, com ela vai ocorrer praticamente tudo, por isso ela ้ chamada de Fa็ade do projeto.
+ * 
+ * @author Daniyel Negromonte Nascimento Rocha
+ */
 package steam;
 
 import java.util.ArrayList;
@@ -22,6 +27,18 @@ public class Loja {
 		this.jogoFactory = new JogoFactory();
 	}
 
+	/**
+	 * Metodo que vai criar um novo usuario.
+	 * 
+	 * @param nome
+	 *            Campo com o nome do usuario.
+	 * @param login
+	 *            Campo com o login do usuario.
+	 * @param dinheiro
+	 *            Campo com o dinheiro inicial do usuario.
+	 * @param tipoUsuario
+	 *            Campo que determina o tipo do usuario: noob/veterano.
+	 */
 	public void criaUsuario(String nome, String login, double dinheiro,
 			String tipoUsuario) {
 		Usuario novoUsuario = null;
@@ -46,6 +63,19 @@ public class Loja {
 		this.usuarios.add(novoUsuario);
 	}
 
+	/**
+	 * Metodo que vai criar um jogo.
+	 * 
+	 * @param nome
+	 *            Campo com o nome do jogo.
+	 * @param preco
+	 *            Campo com o preco do jogo.
+	 * @param tipoDeJogo
+	 *            Campo com o tipo de jogo: RPG/Luta/Plataforma.
+	 * @param estilosDeJogo
+	 *            Campo que recebe nenhum, um ou varios estilos de jogo que sao
+	 *            especificados no enum EstilosDeJogo.
+	 */
 	public void criaJogo(String nome, double preco, String tipoDeJogo,
 			EstilosDeJogo... estilosDeJogo) {
 		Jogo novoJogo = null;
@@ -70,6 +100,17 @@ public class Loja {
 		jogos.add(novoJogo);
 	}
 
+	/**
+	 * Metodo que vende um Jogo. A venda do jogo somente ocorrera se o usuario
+	 * possuir dinheiro suficiente para a compra. Caso isso aconteca, o mesmo
+	 * recebera uma copia do jogo.
+	 * 
+	 * @param login
+	 *            Campo com o login de um determinado usuario.
+	 * @param nomeJogo
+	 *            Campo com o nome de um determinado jogo.
+	 * @return O retorno vai informar se o jogo foi vendido ou nao.
+	 */
 	public boolean vendeJogo(String login, String nomeJogo) {
 		try {
 			Usuario user = this.buscaUsuario(login);
@@ -115,13 +156,15 @@ public class Loja {
 		}
 	}
 
+	/**
+	 * Metodo que vai recompensar um usuario.
+	 */
 	public void recompensar(String login, String nomeJogo, int score,
 			boolean zerouJogo) {
 		try {
 			Usuario user = this.buscaUsuario(login);
 			user.recompensar(nomeJogo, score, zerouJogo);
 		} catch (Exception e) {
-			// e.printStackTrace();
 			int linhaErro = e.getStackTrace()[e.getStackTrace().length - 1]
 					.getLineNumber();
 			System.out.println("Erro na linha " + linhaErro + ": "
@@ -130,6 +173,9 @@ public class Loja {
 		}
 	}
 
+	/**
+	 * Metodo que vai punir um usuario.
+	 */
 	public void punir(String login, String nomeJogo, int score,
 			boolean zerouJogo) {
 		try {
@@ -144,6 +190,13 @@ public class Loja {
 		}
 	}
 
+	/**
+	 * Metodo que vai realizar o upgrade de um usuario, se possivel.
+	 * 
+	 * @param login
+	 *            Campo com o login do usuario que vai tentar realizar o
+	 *            upgrade.
+	 */
 	public void upgrade(String login) {
 		Usuario user;
 		try {
@@ -161,6 +214,13 @@ public class Loja {
 		}
 	}
 
+	/**
+	 * Metodo que vai realizar o downgrade de um usuario, se possivel.
+	 * 
+	 * @param login
+	 *            Campo com o login do usuario que vai tentar realizar o
+	 *            downgrade.
+	 */
 	public void downgrade(String login) {
 		Usuario user;
 		try {
@@ -218,10 +278,12 @@ public class Loja {
 			usuario.listaJogosComprados();
 			System.out.println("Total de preco dos jogos: R$ "
 					+ usuario.totalJogosComprados());
-			System.out.println("ญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญ");
-			System.out.println("Total arrecadado com vendas de jogos: R$ "
-					+ this.totalArrecado);
+			System.out.println();
 		}
+		System.out.println("ญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญญ");
+		System.out.println("Total arrecadado com vendas de jogos: R$ "
+				+ this.totalArrecado);
+		System.out.println();
 	}
 
 }

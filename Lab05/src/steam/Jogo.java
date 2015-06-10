@@ -1,3 +1,8 @@
+/**
+ * Classe Jogo, responsável por ser uma entidade que representa um jogo.
+ * 
+ * @author Daniyel Negromonte Nascimento Rocha
+ */
 package steam;
 
 import java.util.Collections;
@@ -40,6 +45,15 @@ public abstract class Jogo {
 		this.estilosDeJogo = jogo.getEstilosDeJogo();
 	}
 
+	/**
+	 * Metodo que joga o jogo. Incrementa a quantidade de vezes que o jogo é
+	 * jogado e atualiza o maior score quando é necessário. Vai retornar um
+	 * valor de x2p diferente de acordo com cada tipo de jogo.
+	 * 
+	 * @param score Pontuacao obtida naquela jogada.
+	 * @param zerouJogo Confere se zerou o jogo.
+	 * @return Retorna uma pontuacao de x2p de acordo como o tipo de jogo.
+	 */
 	public int joga(int score, boolean zerouJogo) {
 		int novoX2p = 0;
 		vezesJogadas++;
@@ -81,6 +95,10 @@ public abstract class Jogo {
 		return vezesZerou;
 	}
 
+	/**
+	 * Metodo que lista as informacoes acerca do jogo, são elas: quantidade de vezes que um jogo foi jogado; 
+	 * quantidade de vezes que um jogo foi zerado; maior score do jogo.
+	 */
 	public void listaInformacoes() {
 		System.out.println("==> Jogou " + vezesJogadas + " vez(es)");
 		System.out.println("==> Zerou " + vezesZerou + " vez(es)");

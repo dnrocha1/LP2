@@ -1,3 +1,6 @@
+/**
+ * Classe Plataforma, que é uma classe filha de Jogo.
+ */
 package steam;
 
 public class Plataforma extends Jogo {

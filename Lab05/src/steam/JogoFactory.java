@@ -1,3 +1,9 @@
+/**
+ * Classe JogoFactory, responsável por desacoplar a criação de um jogo da classe Loja.
+ * Sua responsabilidade é criar os diferentes tipos de jogos.
+ * 
+ * @author Daniyel Negromonte Nascimento Rocha
+ */
 package steam;
 
 public class JogoFactory {

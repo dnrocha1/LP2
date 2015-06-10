@@ -1,3 +1,6 @@
+/**
+ * Classe RPG, que é uma classe filha de Jogo.
+ */
 package steam;
 
 public class RPG extends Jogo {

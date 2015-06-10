@@ -1,3 +1,6 @@
+/**
+ * Classe Veterano, que é filha da classe Usuario. Vai ter um atributo chamado desconto.
+ */
 package steam;
 
 import exceptions.DowngradeException;

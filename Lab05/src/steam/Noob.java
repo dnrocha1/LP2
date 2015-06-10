@@ -1,3 +1,6 @@
+/**
+ * Classe Noob, que é filha da classe Usuario. Vai ter um atributo chamado desconto.
+ */
 package steam;
 
 import exceptions.DowngradeException;
@@ -21,7 +24,10 @@ public class Noob extends Usuario {
 	public double getDesconto() {
 		return desconto;
 	}
-
+	
+	/**
+	 * Metodo que faz parte do sistema de melhoria de pontuacao. Ele faz o usuario ganhar uma pontuacao extra.
+	 */
 	@Override
 	public void recompensar(String nomeJogo, int score, boolean zerou) throws Exception {
 		Jogo jogo = this.buscaJogo(nomeJogo);
@@ -39,6 +45,9 @@ public class Noob extends Usuario {
 		this.setX2p(x2pAtual);
 	}
 
+	/**
+	 * Metodo que faz parte do sistema de melhoria de pontuacao. Ele faz o usuario perder uma pontuacao extra.
+	 */
 	@Override
 	public void punir(String nomeJogo, int score, boolean zerou)
 			throws Exception {
