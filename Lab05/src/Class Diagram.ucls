@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+<class-diagram version="1.1.8" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <enumeration id="1" language="java" name="steam.EstilosDeJogo" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/EstilosDeJogo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="816" y="1533"/>    
+    <position height="171" width="172" x="133" y="1318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </enumeration>  
   <class id="2" language="java" name="steam.Usuario" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="322" y="921"/>    
+    <position height="495" width="216" x="372" y="392"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="steam.Noob" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/Noob.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="170" y="1366"/>    
+    <position height="207" width="204" x="365" y="927"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="steam.Luta" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/Luta.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1039" y="1497"/>    
+    <position height="99" width="194" x="609" y="1318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="steam.RPG" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/RPG.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1273" y="1497"/>    
+    <position height="99" width="194" x="843" y="1318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="steam.Loja" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/Loja.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="826" y="658"/>    
+    <position height="315" width="268" x="408" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="steam.JogoFactory" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/JogoFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="831" y="278"/>    
+    <position height="189" width="291" x="41" y="392"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="steam.Jogo" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/Jogo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1237" y="1058"/>    
+    <position height="351" width="239" x="609" y="927"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="steam.Plataforma" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/Plataforma.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1522" y="1497"/>    
+    <position height="99" width="224" x="345" y="1318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="steam.Veterano" project="114210779_Daniyel_Lab05" 
     file="/114210779_Daniyel_Lab05/src/steam/Veterano.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="414" y="1366"/>    
+    <position height="207" width="204" x="121" y="927"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -108,6 +108,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="17">    
+    <bendpoint x="618" y="392"/>    
     <end type="SOURCE" refId="6" navigable="false">      
       <attribute id="18" name="jogos"/>      
       <multiplicity id="19" minimum="0" maximum="2147483647"/>    
