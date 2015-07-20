@@ -48,6 +48,9 @@ public class TestaAlbum {
 			Assert.assertEquals(2, formsOfFear.getFaixa(elasticHeart));
 			Assert.assertEquals(3, formsOfFear.getFaixa(cellophane));
 			
+			/*Testar tempo de duracao do album*/
+			Assert.assertEquals(10, formsOfFear.getTempoDuracao());
+			
 			/*Remova algumas músicas do seu álbum.*/
 			formsOfFear.removeMusica(cellophane);
 			formsOfFear.removeMusica(chandelier);
@@ -55,6 +58,7 @@ public class TestaAlbum {
 			/*Verifique se as músicas foram realmente removidas do álbum.*/
 			Assert.assertFalse(formsOfFear.pertenceAlbum(chandelier));
 			Assert.assertFalse(formsOfFear.pertenceAlbum(cellophane));
+			
 			
 		} catch (Exception e) {
 			Assert.fail();

@@ -1,6 +1,6 @@
+/* 114210779 - Daniyel Negromonte Nascimento Rocha: LAB 04 - Turma 03*/
 package sp2fy;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -38,31 +38,29 @@ public class Perfil {
 	}
 
 	public void adicionaPlaylist(String nomePlaylist, String nomeAlbum, int faixa) throws Exception {
+		Playlist outraPlaylist = null;
 		ArrayList<Musica> listaMusicas;
-		Album outroAlbum;
-		if (!this.hasPlaylist(nomePlaylist)) {
-			this.playlist = new HashMap<String, ArrayList<Musica>>();
-			listaMusicas = new ArrayList<Musica>();
-			this.playlist.put(nomePlaylist, listaMusicas);
-		} else {
-			listaMusicas = this.playlist.get(nomePlaylist);
+		//verifica se a playlist com esse nome existe
+		for (Playlist playlist : playlists) {
+			if (playlist.hasPlaylist(nomePlaylist)){
+				outraPlaylist = playlist;
+				break;
+			} else {
+				listaMusicas = new ArrayList<Musica>();
+				outraPlaylist = new Playlist(nomePlaylist, listaMusicas);
+			}
 		}
-		if (!this.pertenceAlbuns(nomeAlbum)) {
-			throw new Exception("Album nao pertence ao Perfil especificado");
+		//Recupera o álbum com o nome especificado no método (nomeAlbum)
+		if (pertenceAlbuns(nomeAlbum)){
+			Musica musicaSelecionada = getAlbum(nomeAlbum).getMusica(faixa);
+			outraPlaylist.getPlaylist().get(nomePlaylist).add(musicaSelecionada);
 		} else {
-			/*
-			 * Se existir, pegue a faixa do álbum especificado na assinatura do
-			 * método e adicione no agrupamento resultante da operação em 1.
-			 */
-			outroAlbum = this.getAlbum(nomeAlbum);
-			this.playlist.get(nomePlaylist).add(outroAlbum.getMusica(faixa));
+			throw new Exception("Album nao pertence ao perfil especificado.");
 		}
+		//Guarde a playlist atualizada no seu agrupamento de playlists
+		playlists.add(outraPlaylist);
 	}
-
-//	public boolean hasPlaylist(String nomePlaylist) {
-//		return this.playlist.containsKey(nomePlaylist);
-//	}
-
+	
 	public String getNome() {
 		return nome;
 	}

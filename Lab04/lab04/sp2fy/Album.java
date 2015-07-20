@@ -1,14 +1,15 @@
+/* 114210779 - Daniyel Negromonte Nascimento Rocha: LAB 04 - Turma 03*/
 package sp2fy;
 
 import java.util.ArrayList;
 
-public class Album {
+public class Album implements Comparable<Album>{
 
 	private ArrayList<Musica> musicas;
-	private int tempoDuracao; // mudar para o tipo time (ou similar)???
-	private String artista; // fazer classe propria -> Artista.class
+	private int tempoDuracao;
+	private String artista;
 	private String titulo;
-	private int ano; // mudar para tipo time???*
+	private int ano;
 
 	public Album(String artista, String titulo, int ano) throws Exception {
 		if (ano > 0) {
@@ -66,4 +67,44 @@ public class Album {
 		this.tempoDuracao -= m.getDuracao();
 		return this.musicas.remove(m);
 	}
+	
+	public int getTempoDuracao(){
+		return this.tempoDuracao;
+	}
+
+	@Override
+	public int compareTo(Album outroAlbum) {
+		if (this.getAno() > outroAlbum.getAno()){
+			return 1;
+		} else if (this.getAno() == outroAlbum.getAno()){
+			return 0;
+		} else {
+			return -1;
+		}
+	}
+	
+	public int compareTo(String nomeArtista){
+		return nomeArtista.compareTo(nomeArtista);
+	}
+	
+	public int compareTo1(int qtdMusicas){
+		if (this.musicas.size() > qtdMusicas){
+			return 1;
+		} else if (this.musicas.size() == qtdMusicas){
+			return 0;
+		} else {
+			return -1;
+		}
+	}
+	
+	public int compareTo2(int tempoDuracaoTotal){
+		if ( this.getTempoDuracao() > tempoDuracaoTotal){
+			return 1;
+		} else if (this.getTempoDuracao() > tempoDuracaoTotal){
+			return 0;
+		} else {
+			return -1;
+		}
+	}
+	
 }
