@@ -8,7 +8,7 @@ public class TestMusica {
 	@Test
 	public void testMusica(){
 		try{
-			Musica chandelier = new Musica("Chandelier",3,"Pop");
+			Musica chandelier = new Musica("",3,"Pop");
 			Musica elasticHeart = new Musica("Elastic Heart",3,"Pop");
 			Musica cellophane = new Musica("Cellophane",4,"Pop");
 			
@@ -29,7 +29,9 @@ public class TestMusica {
 			Assert.assertFalse(chandelier.equals(cellophane));
 
 		}catch(Exception e){
-			Assert.fail();//nao deveria ter lancado nenhuma Exception nesse teste.
+			//Assert.fail();//nao deveria ter lancado nenhuma Exception nesse teste.
+			//Assert.fail("Titulo da musica nao pode ser vazio.");
+			Assert.assertEquals("Titulo da musica nao pode ser vazio.", e.getMessage());
 		}
 	}
 	
